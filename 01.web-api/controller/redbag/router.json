@@ -1,0 +1,3 @@
+[ 
+  {"routefolder":{"folder":"../controller/redbag","baseUrl":"/api/business","authorize": true}}
+]

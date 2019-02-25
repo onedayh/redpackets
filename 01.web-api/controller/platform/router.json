@@ -1,0 +1,3 @@
+[ 
+  {"routefolder":{"folder":"../controller/platform","baseUrl":"/api/platform","authorize": true}}
+]

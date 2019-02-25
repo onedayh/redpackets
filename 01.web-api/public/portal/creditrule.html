@@ -1,0 +1,71 @@
+﻿<table class="form_table" style="padding-top: 10px;width:90%" data-options="fit:true">
+    <tr>
+        <th style="width:120px">规则名称 : </th>
+        <td colspan="3">
+            <input class="easyui-textbox theme-textbox-radius" style="width:95%" name="name" data-options="prompt:'规则名称',missingMessage:'请输入规则名称',required:true,validType:'length[1,50]'" />
+        </td>
+    </tr>
+    <tr>
+        <th style="width:120px">规则编码 : </th>
+        <td>
+            <input class="easyui-numberbox theme-textbox-radius" name="id" data-options="prompt:'规则编码',missingMessage:'请输入规则编码',required:true,min:1,max:100" />
+        </td>
+        <td colspan="2" style="color: #f00">规则编码不可重复,设置100以内数字</td>
+    </tr>
+        <tr>
+        <th>增减类型 : </th>
+        <td>
+            <select class="easyui-combobox theme-textbox-radius" name="io" data-options="editable:false,panelHeight:'auto'" style="width: 130px;">
+                <option value="0" >减少</option>
+                <option value="1" selected>增加</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <th>调用限制 : </th>
+        <td>
+            <select class="easyui-combobox theme-textbox-radius" name="ruletype" data-options="editable:false,panelHeight:'auto'" style="width: 130px;">
+                <option value="0" selected>无限制</option>
+                <option value="1">每日赠送一次</option>
+                <option value="2">累计赠送一次</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <th>数量: </th>
+        <td>
+            <select class="easyui-combobox theme-textbox-radius" name="credittype" data-options="editable:false,panelHeight:'auto',onChange:creditTypeChanged" style="width: 130px;">
+                <option value="0" selected>固定分值</option>
+                <option value="1">调用传入</option>
+            </select>
+        </td>
+        <th class="fixed">
+            固定分值 :
+        </th>
+        <td class="fixed">
+            <input class="easyui-numberbox theme-textbox-radius" name="fixed" data-options="prompt:'固定积分',min:1,max:999999" />
+        </td>
+    </tr>
+</table>
+<%-contentFor('head_extension')%>
+<script>
+    var detailForm;
+    $(document).ready(function () {
+        detailForm = new detailForm('form', {
+            bindOption: { url:  urlConfig.apiUrl.creditrule.base,successFunc:function(result){
+                creditTypeChanged(result.credittype+"");
+            }},
+            saveOption: {
+                button: '#lnkSave', url: urlConfig.apiUrl.creditrule.base,
+                successFunc: function (result) {
+                    dialogHelper.closeModal(result);
+                }
+            }
+        });
+        detailForm.bindForm();
+    });
+    function creditTypeChanged(value){
+        if (value=="0") return $('.fixed').show();
+            $('.fixed').hide();
+    }
+</script>

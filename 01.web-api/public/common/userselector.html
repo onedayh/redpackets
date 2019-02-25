@@ -1,0 +1,30 @@
+﻿<div class="main"  data-options="region:'center',title:'',border:false" style="border:none;">
+    <table id="dg"></table>
+    <div id="tools_User">
+        <div style="text-align: right; padding: 3px 20px 3px 40px;">
+            <a href="#" class="easyui-linkbutton button-blue fa-4x" style="width:100px;height:34px"  onclick="ConfirmSelected()"><i class="fa fa-check"></i>&nbsp; 确定</a>
+            <a href="#" class="easyui-linkbutton fa-4x"  style="width:100px;height:34px" onclick="dialogHelper.closeModal()"><i class="fa fa-sign-out"></i> &nbsp;取消</a>
+        </div>
+        <div style="margin-bottom: 5px">
+            <table  style="padding-top: 10px;" class="form_table">
+                <tr>
+                    <th>姓名:</th>
+                    <td><input class="easyui-textbox theme-textbox-radius"  search-options="key:'name'"  type="text"/></td>
+                    <td>
+                        <a href="#" class="easyui-linkbutton  button-blue" style="width:80px" id="btnSearch"><i class="fa fa-search"></i>查询</a>
+                        <a href="#" class="easyui-linkbutton" style="width:80px" id="btnReset"><i class="fa fa-refresh"></i>重置</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- contentFor('head_extension') %>
+<script type="text/javascript" src="/common/js/userselector.js"></script>
+    <style type="text/css">
+    .datagrid-row {height: 40px;}
+    .datagrid-cell{white-space:normal;word-break: break-all;}
+    .datagrid-cell img { max-height: inherit;}
+    .datagrid-cell-c2-logo {position: relative;}
+</style>

@@ -1,0 +1,97 @@
+﻿<div id="tabmember" class="easyui-tabs" data-options="fit:true">
+    <div title="<span class='tt-inner'>用户资料</span>" style="padding-top: 10px;text-align: center" data-options="fit:true">
+        <div style=" border: 1px solid #606266;margin:0 auto;height:450px;width:340px;padding-top: 0px;text-align: center">
+                <div style="height:100px;padding-top: 20px;background-color: #606266;" >
+                    <img src=" ../images/member/default.png" id="imgHead" style="width:48px;cursor: pointer;border-radius: 50%;border:1px solid #CCC" />
+                    <p style="margin-top: 5px"><span style="color:#fff;font-weight: bold;font-size: 14px" id="userName"></span></p>
+                    <p> <span style="margin-top: 40px;color:lightcyan;" id="userLevel"></span></p>
+                    <p> <span style="margin-top: 40px;color:red;font-size: 13px" id="userBody"></span></p>
+                </div>
+                <table class="form_table" style="background-color: #fff;padding-top: 10px;width:100%;text-align: left;line-height: 25px">
+                    <tr>
+                        <th style="width:90px"><i class="fa fa-mars"></i>&nbsp;&nbsp;用户性别 :</th>
+                        <td>
+                            <span  id="spanSex"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="fa fa-mobile fa-2x"></i>&nbsp;&nbsp;绑定手机 :</th>
+                        <td>
+                            <input name="mobile"  id="mobile" class="easyui-textbox  theme-textbox-radius" style="width:150px" data-options="buttonText:'更新',onClickButton:bindPhone, prompt:'手机号码',validType:'length[0,11]'"/>
+                            <!-- <a href="#" class="easyui-linkbutton button-blue fa-4x" style="width:60px;height:25px" id="lnkSave"><i class="fa fa-save"></i>更新</a> -->
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <th style="width:80px">钱包余额:</th>
+                        <td>
+                           <span id="userBalance" style="color:red;"></span>
+                        </td>
+                    </tr> -->
+                    <tr>
+                        <th style="width:80px"><i class="fa fa-briefcase"></i>&nbsp;&nbsp;钱包余额 :</th>
+                        <td>
+                            <span  id="userBalance"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="width:80px"><i class="fa fa-leaf"></i>&nbsp;&nbsp;累计收益 :</th>
+                        <td>
+                            <span id="userRebate"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="width:80px"><i class="fa fa-rmb"></i>&nbsp;&nbsp;累计消费 :</th>
+                        <td>
+                           <span style="color:#d84f4b;" id="userPay"></span>
+                        </td>
+                    </tr>
+                   
+                  
+                </table>
+        </div>
+        
+    </div>
+    <div title="购物订单" style="padding: 10px" data-options="fit:true">
+        <table id="dgOrder" class="form_table" style="padding-top: 10px;" align="center">
+        </table>
+    </div>
+     <!-- <div title="<span class='tt-inner'>分销返利</span>" style="padding: 10px" data-options="fit:true">
+        <div id="tools_Rebate" style="width: 100%; border: none;">
+           <table class="form_table" style="padding-top: 10px;">
+                <tr>
+                    <th>返利级别:</th>
+                    <td>
+                         <select search-options="key:'level',group:'rebate'" class="easyui-combobox theme-textbox-radius" data-options="editable:false,panelHeight: 'auto'"  style="width:130px">
+                                <option value="" selected>全部</option>
+                                <option value="1">一级返利</option>
+                                <option value="2">二级返利</option>
+                        </select>    
+                    </td>
+                    <th>审核状态:</th>
+                    <td>
+                         <select search-options="key:'status',group:'rebate'" class="easyui-combobox theme-textbox-radius" data-options="editable:false,panelHeight: 'auto'"  style="width:130px">
+                                <option value="" selected>全部</option>
+                                <option value="0">待审核</option>
+                                <option value="1">已审核</option>
+                        </select>    
+                    </td>
+                    <td>
+                        <a href="#" id="btnSearchRebate" class="easyui-linkbutton" iconcls="icon-search">查询</a>
+                        <a href="#" id="btnResetRebate" class="easyui-linkbutton" iconcls="icon-reload">重置</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <table id="dgRebate" class="form_table" style="padding-top: 10px;" align="center">
+        </table>
+    </div> -->
+</div>
+<%- contentFor('head_extension') %>
+<script type="text/javascript" src="scripts/memberdetail.js"></script>
+<script type="text/javascript" src="/scripts/framework/framework_listform.js"></script>
+ <style type="text/css">
+    .input_label {font-size:14px;color:#333}
+     .redfont {font-weight:bold;color:red}
+     .datagrid-footer{background-color: #1b8cf2;}
+    .datagrid-footer .datagrid-ftable{color: #fff}
+</style>

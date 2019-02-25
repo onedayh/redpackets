@@ -1,0 +1,80 @@
+﻿<div id="side" data-options="region:'west',split:true,title:'类型'" style="width: 150px; border-left: none;">
+    <ul id="ulCatalogTree"></ul>
+</div>
+<div class="main"  data-options="region:'center',title:'',border:false" style="border:none;">
+    <table id="dg"></table>
+    <div id="toolbar">
+        <div id="productType" style="padding:5px;">
+            <a href="#" id="type-2"  class="easyui-linkbutton" onclick="switchProduct(2)" data-options="toggle:true,group:'g1',selected:true"><i class="fa fa-gift"></i>&nbsp;商品</a>
+            <a href="#" id="type-3"  class="easyui-linkbutton" onclick="switchProduct(3)" data-options="toggle:true,group:'g1'"><i class="fa fa-credit-card"></i>&nbsp;购物卡</a>
+            <!-- <a href="#" class="easyui-linkbutton" onclick="switchProduct(1)" data-options="toggle:true,group:'g1'"><i class="fa fa-ticket"></i>&nbsp;线下活动</a>  -->
+        </div>
+        <div style="text-align: right; padding: 3px 20px 3px 40px;">
+            <a href="#" class="easyui-linkbutton button-blue fa-4x" style="width:100px;height:34px"  onclick="ConfirmSelected()"><i class="fa fa-check"></i>&nbsp; 确定</a>
+            <a href="#" class="easyui-linkbutton fa-4x"  style="width:100px;height:34px" onclick="dialogHelper.closeModal()"><i class="fa fa-sign-out"></i> &nbsp;取消</a>
+        </div>
+        <div style="margin-bottom: 5px">
+            <table  style="padding-top: 10px;" class="form_table">
+                <tr>
+                    <th style="width:50px">名称:</th>
+                    <td>
+                        <input class="easyui-textbox theme-textbox-radius"  search-options="key:'name'"  type="text"/>
+                    </td>
+                    <th>促销:</th>
+                    <td><select  search-options="key:'promotion'" class="easyui-combobox theme-textbox-radius" data-options="editable:false,panelHeight: 'auto'"  style="width: 100px;">
+                            <option value="" selected>全部</option>
+                            <option value="inpromotion=0 and indiscount=0">无</option>
+                            <option value="inpromotion=1 and promotion  =2 ">团购</option>
+                            <option value="inpromotion=1 and promotion  =4">秒杀</option>
+                            <option value="inpromotion=1 and promotion  =8">预售</option>
+                            <option value="indiscount=1">限时折扣</option>
+                        </select>
+                    </td>
+                    <th colspan="2">
+                        <a href="#" class="easyui-linkbutton  button-blue" style="width:80px" id="btnSearch"><i class="fa fa-search"></i>查询</a>
+                        <a href="#" class="easyui-linkbutton  button-blue" style="width:80px" id="btnReset"><i class="fa fa-refresh"></i>重置</a>
+                    </th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<%- contentFor('head_extension') %>
+<script type="text/javascript" src="/scripts/framework/framework_treeform.js"></script>
+<script type="text/javascript" src="/common/js/productselector.js"></script>
+<style type="text/css">
+.main .datagrid-row {
+    height: 70px;
+}
+.main .datagrid-cell{
+    white-space:normal; 
+}
+.main .datagrid-cell img {
+    max-height: inherit;
+}
+.main .datagrid-cell-c2-logo {
+    position: relative;
+}
+.l-btn-selected {background:#db2828;border-color: #db2828}
+.l-btn-selected .l-btn-text {color:white;}
+.title {font-weight: bold}
+.tree-node{height:25px;}
+.tree-icon{padding-top: 9px;}
+.tree-title{padding-top: 4px;}
+.promotiontag21 {padding: 4px 8px;border-radius: 3px; border: 1px solid #1b8cf2;background-color: #1b8cf2;color:white}
+    .promotiontag2-1 {padding: 4px 8px;border-radius: 3px; border: 1px solid #cd9903;background-color: #cd9903;color:white}
+    .promotiontag2-2 {padding: 4px 8px;border-radius: 3px; border: 1px solid #343637;background-color: #343637;color:white}
+
+    .promotiontag41 {padding: 4px 8px;border-radius: 3px; border: 1px solid #db2828;background-color: #db2828;color:white}
+    .promotiontag4-1 {padding: 4px 8px;border-radius: 3px; border: 1px solid #cd9903;background-color: #cd9903;color:white}
+    .promotiontag4-2 {padding: 4px 8px;border-radius: 3px; border: 1px solid #343637;background-color: #343637;color:white}
+
+    .promotiontag81 {padding: 4px 8px;border-radius: 3px; border: 1px solid #00bf8f;background-color: #00bf8f;color:white}
+    .promotiontag8-1 {padding: 4px 8px;border-radius: 3px; border: 1px solid #cd9903;background-color: #cd9903;color:white}
+    .promotiontag8-2 {padding: 4px 8px;border-radius: 3px; border: 1px solid #343637;background-color: #343637;color:white}    .notstart {color:cyan}
+    .inpromotion {color:darkgreen}
+    .finished {color:#777}
+
+</style>

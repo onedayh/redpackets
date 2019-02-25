@@ -1,0 +1,8 @@
+<nav-bar bgColor="transparent" showBack></nav-bar>
+<view class="cvs-wrap">
+    <canvas canvas-id="myCanvas" class="my-canvas"></canvas>
+</view>
+<cover-view class="share-wrap" wx:if="{{isLoad}}">
+    <button class="share" open-type="share">分享给好友</button>
+    <cover-view class="save" bindtap="save">保存海报</cover-view>
+</cover-view>

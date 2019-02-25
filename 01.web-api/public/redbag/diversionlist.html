@@ -1,0 +1,50 @@
+﻿<div class="main" data-options="region:'center',title:''" style="border:none">
+    <table id="dg"></table> 
+    <div id="tools_1">
+        <div class="easyui-panel" style="padding:5px;border:none;">
+            <a href="#" id="export" class="easyui-linkbutton button-blue fa-4x" style="width:110px;height:34px"><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;导出数据</a>
+        </div>
+    </div>
+</div>
+<%- contentFor('head_extension') %>
+<style type="text/css">
+    .main .datagrid-row {height: 44px;}
+    .main .datagrid-cell{white-space:normal; }
+    .main .datagrid-cell img {max-height: inherit;}
+    .main .datagrid-cell-c2-logo {position: relative;}
+</style>
+<script>
+var memberlist;
+///初始化列表控件
+function getList(id) {
+     memberlist = new listForm('dg', {
+        //title: '应用系统列表',
+            url: urlConfig.apiUrl.public.diversion.format(id),
+            toolbar: '#tools_1',
+            excelOption:{button:'#export',excelkey:'diversion',fileName:'diversion.xlsx'},
+            columns: [[
+                {field: 'topic', title: '红包主题',halign:'center', width: 160},
+                {
+                    field: 'userlogo', title: '',align:'center', halign:'center',width: 50
+                    , formatter: function (value, row, index) {
+                        var header = "<img src='" +value+ "' style='border:1px solid #ccc;border-radius: 50%;width:32px;height:32px;'>";
+                        return header;
+                    }
+                },
+                {field: 'username', title: '姓名',halign:'center', width: 90},
+                { field: 'gotime', title: '引流时间',align:'center', width: 160
+                 , formatter: function (value, row, index) {
+                        return $.formatDate(value,'yyyy年MM月dd日 hh:mm',true);
+                    }
+                },
+            ]]
+        });
+    }
+    ///页面加载完毕后初始化目录树和列表
+    ///
+    $(document).ready(function () {
+        var id = $.getUrlParam('id');
+        getList(id);
+    });
+
+</script>

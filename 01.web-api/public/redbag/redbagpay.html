@@ -1,0 +1,83 @@
+﻿<input type="hidden" name="orderid" id="orderid"/>
+<table class="form_table" style="padding-top:30px;width:90%" data-options="fit:true">
+        <tr>
+            <th style="width:90px">支付日期:</th>
+            <td>
+               <input id="paydate"  class="easyui-datebox theme-textbox-radius" name="paydate" data-options="missingMessage:'请输入支付日期',required:true">
+            </td>
+        </tr>
+        <tr>
+            <th>红包金额 :</th>
+            <td >
+                <input readonly class="easyui-numberbox theme-textbox-radius" id="amount" name="amount" data-options="suffix:'元'" /> 
+            </td>
+        </tr>
+        <tr>
+            <th>收取服务费 :</th>
+            <td >
+                <input class="easyui-numberbox theme-textbox-radius" id="service" name="service" data-options="missingMessage:'请输入服务费用',onChange:serviceChange, required:true,min:0,max:9999,precision:2,suffix:'元'" /> 
+            </td>
+        </tr>
+        <tr>
+            <th>费用总计 :</th>
+            <td >
+                <input readonly class="easyui-numberbox theme-textbox-radius" id="ordertotal" name="ordertotal" data-options="required:true,min:1,max:999999,precision:2,suffix:'元'" /> 
+            </td>
+        </tr>
+        <tr>
+            <th>截图凭证 :</th>
+            <td colspan="3" style="color: #999">线下支付请上传支付截图凭据</td>
+        </tr>
+        <tr>
+            <th></th>
+            <td colspan="3">
+                <imageUpload id="imgOrder" style="width:120px;height:90px" data-option="'key':'orderimage','name':'image'"></imageUpload>
+            </td>
+        </tr>
+        <tr>
+            <th>备注:</th>
+            <td colspan="3">
+                <input  class="easyui-textbox theme-textbox-radius" style="width: 95%;height: 80px" name="memo" data-options="multiline:true,invalidMessage:'支付备注!',validType:'length[1,128]'">
+            </td>
+        </tr>
+    </table>
+
+<%-contentFor('head_extension')%>
+<script type="text/javascript" src="/scripts/framework/framework_detailform.js"></script>
+ <!--以下三个是用于上传的-->
+ <script type="text/javascript" src='/scripts/jquery.ui.widget.js'></script>
+ <script type="text/javascript" src='/scripts/jquery.fileupload.js'></script>
+ <script type="text/javascript" src="/scripts/framework/framework_uploader.js"></script>
+<script>
+var detailForm;
+$(document).ready(function () {
+    detailForm = new detailForm('form', {
+        bindOption: { url: urlConfig.apiUrl.redbags.payinfo,
+            successFunc:function(result){
+                if($.isNullOrEmpty(result.paydate))
+                    $('#paydate').datebox('setValue',$.formatDate(new Date(),'yyyy-MM-dd'));
+                $('#imgOrder')[0].setImage(result.image);
+        }},
+        saveOption: {
+            button: '#lnkSave', url: urlConfig.apiUrl.redbags.payinfo,
+            beforeFunc:function(option){
+                if ($.isNullOrEmpty($('#imgOrder')[0].getImage())){
+                    $.messager.alert('提示','请上传线下支付截图凭据','warning');
+                    return false;
+                }
+                return true;
+            },
+            successFunc: function (result) {
+                dialogHelper.closeModal({payed:1});
+            }
+        }
+    });
+    detailForm.bindForm();
+});
+
+function serviceChange(newValue,old){
+    var amount = $('#amount').numberbox('getValue');
+    if (isNaN(newValue)) newValue = 0;
+    $('#ordertotal').numberbox('setValue',parseFloat(amount)+parseFloat(newValue))
+}
+</script>

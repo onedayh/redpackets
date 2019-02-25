@@ -1,0 +1,54 @@
+﻿<table class="form_table" style="padding-top:15px;width:90%" data-options="fit:true">
+    <tr>
+        <th style="width:120px">返利类型:</th>
+        <td colspan="3">
+           <span id="configName" style="color:#ff8400;font-weight:bold"></span>
+        </td>
+    </tr>
+    <tr>
+        <th>启动返利:</th>
+        <td colspan="3"> 
+            <input class="easyui-switchbutton" id="configenable" data-options="onText:'允许',offText:'禁止',onChange:switchEnable"/>
+            <span style="color: #666">启动返利设置,则每订单根据引入的用户实施返利</span>
+            <input type="hidden" name="enabled" id="hidEnabled">
+        </td>
+        
+    </tr>
+    <tr class="canShare">
+        <th>返利模式 :</th>
+        <td>
+            <select  name="type" id="rebateType" class="easyui-combobox theme-textbox-radius" data-options="editable:false,panelHeight: 'auto',onChange:typeChanged" style="width: 160px;">
+                <option value="0" selected>每订单固定金额返利</option>
+                <option value="1">订单金额百分比提成</option>
+            </select>
+        </td>
+        <th style="width:120px">允许二级返利 :</th>
+        <td> 
+            <input class="easyui-switchbutton" id="configenable2" data-options="onText:'允许',offText:'禁止',onChange:switchEnable2">
+            <input type="hidden" name="enabled2" id="hidEnabled2">
+        </td>
+    </tr>
+    <tr class="canShare" id="fixedMoney">
+        <th>一级返利 :</th>
+        <td>
+            <input name="money1" style="width:90px" class="easyui-numberbox theme-textbox-radius"  data-options="min:0,max:9999,precision:2"/>
+        </td>
+        <th>二级返利 :</th>
+        <td>
+            <input name="money2" style="width:90px" class="easyui-numberbox theme-textbox-radius rate2"  data-options="min:0,max:9999,precision:2"/>
+        </td>
+    </tr>
+    <tr class="canShare" id="orderRate">
+        <th>一级返利 :</th>
+        <td>
+            <input name="rate1" style="width:90px" class="easyui-numberbox theme-textbox-radius"  data-options="min:0,max:100,precision:0"/> %
+        </td>
+        <th>二级返利 :</th>
+        <td>
+            <input name="rate2" style="width:90px" class="easyui-numberbox theme-textbox-radius rate2"  data-options="min:0,max:100,precision:0"/> %
+        </td>
+    </tr>
+</table>
+
+<%-contentFor('head_extension')%>
+<script type="text/javascript" src="/admin/scripts/rebatedetail.js"></script>

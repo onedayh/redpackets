@@ -1,0 +1,41 @@
+﻿<input type="hidden" id="dict_id" name="dict_id" />
+<table class="form_table" style="padding-top:15px;width:90%" data-options="fit:true">
+    <tr>
+        <th style="width:120px">字典名称:</th>
+        <td>
+            <input class="easyui-textbox theme-textbox-radius"  style="width: 200px" name="name" data-options="missingMessage:'请输入字典项名称',required:true,validType:'length[1,50]'" />
+        </td>
+    </tr>
+    <tr>
+        <th>字典项值 :</th>
+        <td>
+            <input class="easyui-textbox theme-textbox-radius"   style="width: 200px"  name="value" data-options="missingMessage:'请输入字典项值',required:true,validType:'length[1,20]'" />
+        </td>
+    </tr>
+    <tr>
+        <th>描述 :</th>
+        <td>
+            <input class="easyui-textbox theme-textbox-radius"   style="width: 330px;height:40px"  name="ext1" data-options="multiline:true,validType:'length[1,128]'" />
+        </td>
+    </tr>
+</table>
+
+<%-contentFor('head_extension')%>
+<script>
+    var detailForm;
+    $(document).ready(function () {
+        detailForm = new detailForm('form', {
+            initForm:function(){
+                    $('#dict_id').val($.getUrlParam('dictUid'));
+            },
+            bindOption: { url: urlConfig.apiUrl.dictionaryitem.base },
+            saveOption: {
+                button: '#lnkSave', url:urlConfig.apiUrl.dictionaryitem.base,
+                successFunc: function (result) {
+                    dialogHelper.closeModal(result);
+                }
+            }
+        });
+        detailForm.bindForm();
+    });
+</script>

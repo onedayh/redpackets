@@ -1,0 +1,8 @@
+[ 
+    {"routefolder":{"folder":"../controller/mini","baseUrl":"/api/mini","authorize": false}},
+    {"routefolder":{"folder":"../controller/mini/redbag","baseUrl":"/api/mini/redbag","authorize": false}},
+    {"routefolder":{"folder":"../controller/mini/message","baseUrl":"/api/mini/message","authorize": false}},
+    {"routefolder":{"folder":"../controller/mini/wechat","baseUrl":"/api/mini","authorize": false}},
+    {"routefolder":{"folder":"../controller/mini/system","baseUrl":"/api/mini/system","authorize": false}},
+    {"routefolder":{"folder":"../controller/mini/member","baseUrl":"/api/mini/member","authorize": false}}
+]

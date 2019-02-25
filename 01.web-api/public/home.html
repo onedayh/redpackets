@@ -1,0 +1,212 @@
+﻿<link rel="stylesheet" href="./home.css">
+
+<div class="main">
+
+    <!-- 第一行 -->
+    <div class="row row1">
+
+        <!-- 用户模块 -->
+        <div class="container user-container" onclick="openPage('会员用户','./crm/memberlist')">
+            <div class="container-title">平台</div>
+            <div class="container-body">
+                <div class="item">
+                    <div class="item-num total">0</div>
+                    <div class="item-text">累计用户</div>
+                </div>
+                <div class="item">
+                    <div class="item-num today">0</div>
+                    <div class="item-text">今日新增用户</div>
+                </div>
+                <div class="item">
+                        <div class="item-num activity">0</div>
+                        <div class="item-text">红包活动</div>
+                    </div>
+                <div class="item">
+                    <div class="item-num amount">0</div>
+                    <div class="item-text">红包总额</div>
+                </div>
+                <div class="item">
+                    <div class="item-num alloc">0</div>
+                    <div class="item-text">已领金额</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 最佳 -->
+        <div class="container logistics-container">
+            <div class="container-title">最佳玩家</div>
+            <div class="container-body">
+                <div class="item">
+                    <div class="item-text">最豪红包主</div>
+                    <div class="item-num bestprovider"></div>
+                </div>
+                <div class="item">
+                    <div class="item-text">最快抢手</div>
+                    <div class="item-num bestplayer"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- 第二行 -->
+    <div class="row row2">
+            <div class="container channel-container">
+                <div class="container-title">平台近10日数据</div>
+                <div class="container-body">
+                    <div style="width:90%;height:360px;" id="recent"></div>
+                </div>
+            </div>
+    
+        </div>
+
+    </div>
+
+    
+</div>
+
+
+<!-- <div class="easyui-layout" data-options="fit:true">
+    <div>
+            <div class="theme-user-info-panel">
+                <div class="left" style="padding-top: 20px; text-align: center">
+                    <img src="./images/member.png" style="-moz-border-radius:0px;-webkit-border-radius:0px;" width="48" height="48">
+                    <br>
+                     <h3 style="font-size:16px;color:#555">用户</h3>
+                </div>
+                <div class="right">
+                    <ul>
+
+                        <li>
+                            <a href="#" onclick="openPage('平台用户','./crm/memberlist.html')">
+                                <div id="totalUser" class="gauge color_1"></div><span>累计用户</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="openPage('平台用户','./crm/memberlist.html')">
+                                <div id="todayUser" class="gauge color_2" ></div><span>今日新增</span>
+                            </a>
+                        </li>
+                        <li>
+                            <div id="totalMember" class="gauge color_1">无</div><span>黑卡会员</span></li>
+                        <li>
+                            <div id="todayMember" class="gauge color_4"></div><span>今日会员</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+             <div class="theme-user-info-panel">
+                <div class="left" style=" padding-top: 20px;text-align: center;">
+                    <img src="./images/store.png" style="-moz-border-radius:0px;-webkit-border-radius:0px;"  height="48">
+                    <br>
+                     <h3 style="font-size:16px;color:#555;margin: 5px">商城</h3>
+                </div>
+                <div class="right">
+                    <ul>
+                        <li>
+                            <a href="#" onclick="openPage('产品管理','./ecommerce/productlist.html')">
+                                <div id="totalProduct" class="gauge color_1"></div><span>上架的产品</span>
+                            </a>
+                        </li>
+                        <li>
+                             <a href="#" onclick="openPage('商品订单','./marketing/productorder.html')">
+                                <div id="totalIncome" class="gauge color_4" >
+                                </div><span>累计销售额</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="openPage('商品订单','./marketing/productorder.html?today=1')">
+                                <div id="todayOrder" class="gauge color_1">无</div><span>今日订单</span></li>
+                            </a>
+                        <li>
+                            <a href="#" onclick="openPage('商品订单','./marketing/productorder.html??today=1')">
+                                <div id="todayIncome" class="gauge color_4"></div><span>今日销售</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="theme-user-info-panel">
+                <div class="left" style=" padding-top: 20px;text-align: center;">
+                    <img src="./images/logistics.png" style="-moz-border-radius:0px;-webkit-border-radius:0px;"  height="48">
+                    <br>
+                     <h3 style="font-size:16px;color:#555;margin: 5px">物流</h3>
+                </div>
+                <div class="right">
+                    <ul>
+                        <li>
+                             <a href="#" onclick="openPage('商品订单','./marketing/productorder.html?logistics=1')">
+                                <div id="waitingLog" class="gauge color_2" >无
+                                </div><span>待物流订单</span>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+    </div>
+</div> -->
+
+<%- contentFor('head_extension') %>
+<!--第三方插件加载-->
+<!-- <script src="/scripts/justgage-1.2.2/raphael-2.1.4.min.js"></script>
+<script src="/scripts/justgage-1.2.2/justgage.js"></script> -->
+<script src="/scripts/echarts.common.min.js"></script>
+<script type="text/javascript" src="/scripts/framework/framework_echarts.js"></script>
+<!-- <script type="text/javascript" src="/scripts/highcharts/4.2.3/highcharts.js"></script>
+<script type="text/javascript" src="/scripts/highcharts/4.2.3/exporting.js"></script>
+<script type="text/javascript" src="/scripts/framework/framework_charts.js"></script> -->
+<script type="text/javascript" src="/scripts/home.js"></script>
+<!-- <style>
+    .gauge {
+        width: 110px;
+        height: 60px;
+        text-align: center;
+        padding-top: 20px;
+        line-height: 50px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .color_1 {
+        color: #FE8036
+    }
+
+    .color_2 {
+        color: #47B647
+    }
+
+    .color_3 {
+        color: #333
+    }
+
+    .color_4 {
+        color: red
+    }
+
+    .color_5 {
+        color: green
+    }
+
+    a.tabs-inner {
+        line-height: 10px
+    }
+
+    ul.tabs {
+        height: 25px
+    }
+
+    span.tabs-title {
+        line-height: 12px
+    }
+
+    .tabs-selected {
+        font-size: 20px
+    }
+
+    /* .chartContainer {box-shadow:1px 1px 1px #373d41;border: 1px solid #373d41;height:260px;} */
+    /* .theme-user-info-panel {margin-top:20px; padding-top: 0px;box-shadow:10px 10px 5px #373d41;border:1px solid #bbb}
+            .theme-user-info-panel .left {width: 140px;padding:3px 3px 10px 10px}
+            .theme-user-info-panel .right ul li {font-size: 20px; margin: 0px 5px 0 0; padding: 0 13px 0 0;}
+            .theme-user-info-panel .right ul li span {margin: 0px 0 5px;} */
+</style> -->

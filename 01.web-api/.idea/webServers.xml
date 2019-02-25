@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="18c50ec0-5eb6-41fe-a8f0-c9f4170b66f4" name="emall" url="http://134.175.9.182">
+        <fileTransfer host="134.175.9.182" port="22" rootFolder="/usr/local/application/web/emall" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

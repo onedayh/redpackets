@@ -1,0 +1,77 @@
+﻿<div id="tabMenu" class="easyui-tabs" data-options="fit:true">
+    <div title="基本信息" style="padding: 10px;" data-options="fit:true">
+        <input type="hidden" id="pid" name="pid" />
+        <table class="form_table" style="padding-top: 10px;width:90%" data-options="fit:true">
+            <tr>
+                <th style="width:140px">功能名称 : <font color='red'>*</font>
+                </th>
+                <td colspan="3">
+                    <input class="easyui-textbox theme-textbox-radius" name="name" data-options="missingMessage:'请输入菜单文字',invalidMessage:'输入内容不能超过50个字符!',required:true,validType:'length[1,50]'" />
+                </td>
+            </tr>
+            <tr>
+                <th>菜单图标 :
+                </th>
+                <td colspan="3">
+                    <imageUpload id="imgIcon" style="width:32px;height:32px" data-option="'key':'menuIcon', 'name':'icon'"></imageUpload>
+                    <!-- <img src=" ../images/menuIcon/default.png" width="20" id="icon" />
+                    <input type="hidden" id="hideicon" name="icon" /> -->
+                    &nbsp;&nbsp; (图像大小：32px * 32px)
+                </td>
+            </tr>
+            <tr style="display: none">
+                <th>菜单类型 :
+                </th>
+                <td>
+                    <select name="type" class="easyui-combobox theme-textbox-radius" data-options="editable:false" style="width: 120px; height: 28px;">
+                        <option value="0" selected>本站链接</option>
+                        <option value="1">外部链接</option>
+                        <option value="2">应用类型</option>
+                    </select>
+                </td>
+            </tr>
+            <tr style="display: none">
+                <th>导航方式 :
+                </th>
+                <td>
+                    <select name="open" class="easyui-combobox theme-textbox-radius" data-options="editable:false" style="width: 120px; height: 28px;">
+                        <option value="0" selected>嵌入打开</option>
+                        <option value="1">新窗口打开</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>菜单地址 :</th>
+                <td colspan="3">
+                    <input class="easyui-textbox theme-textbox-radius" style="width: 95%" name="url" data-options="invalidMessage:'输入内容不能超过255个字符!',validType:'length[1,255]'" />
+                </td>
+            </tr>
+            <tr>
+                <th>排序位置:</th>
+                <td>
+                    <input class="easyui-numberbox theme-textbox-radius" style="width: 120px" name="index" data-options="min:0" />
+                </td>
+                <th></th>
+                <td>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div title="权限设置" style="padding: 5px" data-options="fit:true">
+        <div id="tools_1" style="width: 100%; ">
+            <div class="easyui-panel" style="padding: 5px; border: none">
+                <a href="#" class="easyui-linkbutton button-blue fa-4x" style="width:110px;height:34px" onclick="addUserRoles()"><i class="fa fa-plus"></i>&nbsp;分配角色</a>
+                <a href="#" class="easyui-linkbutton button-red fa-4x" style="width:110px;height:34px" id="lnkRemoveRole"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+            </div>
+        </div>
+        <table id="dgPrivilege" class="form_table" style="padding-top: 10px;" align="center">
+        </table>
+    </div>
+</div>     
+<%-contentFor('head_extension')%>
+<script type="text/javascript" src="/scripts/framework/framework_listform.js"></script>
+<!--以下三个是用于上传的-->
+<script type="text/javascript" src='/scripts/jquery.ui.widget.js'></script>
+<script type="text/javascript" src='/scripts/jquery.fileupload.js'></script>
+<script type="text/javascript" src="/scripts/framework/framework_uploader.js"></script>
+<script type="text/javascript" src="/admin/scripts/sysmenudetail.js"></script>

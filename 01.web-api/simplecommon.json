@@ -1,0 +1,96 @@
+﻿{
+  "user" : {
+    "list": {
+      "sqltype":"sql",
+      "sql": "SELECT SQL_CALC_FOUND_ROWS id,name,account from vw_sys_user  where disabled=0",
+      "sort": "name",
+      "search": 
+      [
+        {"pattern": " and name like '%@name@%' "}
+      ]
+    }
+  },
+  "addrole" : {
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS role_id,role_key,role_name from fw_roles where role_id not in (select role_id from fw_userrole where user_id='@query.user_id@') and rec_isdeleted=0",
+      "sort": "role_name",
+      "search": 
+      [
+        {"pattern": " and (role_name like '%@name@%' or role_key like '%@name@%') "}
+      ],
+      "field": [
+        {"name": "role_id","format": "","nullValue": "","mapping": "id"},
+        {"name": "role_name","format": "","nullValue": "","mapping": "name"}
+      ]
+    }
+  },
+  "addroleuser" : {
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS id,name,account from vw_sys_user mu where id not in (select user_id from fw_userrole where role_id='@query.role_id@')",
+      "sort": "name",
+      "search": 
+      [
+        {"pattern": " and (name like '%@name@%' or account like '%@name@%') "}
+      ]
+    }
+  },
+  "adduserandrole" : {
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS * from (select id,name,0 as type,'用户' as typename from vw_sys_user union select role_id as id,role_name as name,1 as type,'角色' as typename from fw_roles where rec_isdeleted=0) item where (1=1)",
+      "sort": "type",
+      "search": 
+      [
+        {"pattern": " and name like '%@query.name@%' "},
+        {"pattern": " and type = '@query.type@' "}
+      ],
+      "field": [
+        {"name": "id"},
+        {"name": "name"},
+        {"name": "type"},
+        {"name": "typename"}
+      ]
+    }
+  },
+  "district" : {
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS district_id,district_name,district_index from bas_district where rec_isdeleted=0 and district_level=@query.level@",
+      "sort": "district_index",
+      "search": 
+      [
+        {"pattern": " and district_name like '%@query.name@%' "}
+      ],
+      "field": [
+        {"name": "district_id","format": "","nullValue": "","mapping": "id"},
+        {"name": "district_name","format": "","nullValue": "","mapping": "name"}
+      ]
+    }
+  },
+  "miniuser" : {
+    "list": {
+      "sqltype":"sql",
+      "sql": "select user_logo,user_id as id,user_name as name  from crm_user where 1=1",
+      "sort": "user_name"
+    }
+  },
+  "wechatpublic":{
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS app_id as id, app_name as name from bas_wechat_publicinfo wp where 1=1",
+      "sort": "app_name",
+      "search":[
+        {"pattern": " and app_name like '%@name@%' "}
+      ]
+    }
+  },
+  "music":{
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS music_id as id, music_title as title,music_file as file from bas_red_music  where music_enabled=1",
+      "sort": "music_index desc"
+    }
+  }
+}

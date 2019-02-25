@@ -1,0 +1,63 @@
+﻿<table class="form_table" style="padding-top:30px;padding-bottom: 30px; width:90%" data-options="fit:true">
+    <tr>
+        <th style="width:140px">主题 :</th>
+        <td colspan="3">
+            <input class="easyui-textbox theme-textbox-radius"  style="width:80%" name="title" data-options="prompt:'音乐主题',missingMessage:'请输入音乐主题',required:true,validType:'length[1,50]'" />
+        </td>
+    </tr>
+    <tr>
+        <th>音频文件 :</th>
+        <td colspan="3" style="color: #999">情上传文件mp3格式</td>
+    </tr>
+    <tr>
+        <th></th>
+        <td colspan="3">
+            <imageUpload id="audiofile" style="width:380px;height:50px" data-option="'type':'audio','key':'redbagmusic',name:'file'"></imageUpload>
+        </td>
+    </tr>
+    <tr>
+        <th>显示次序 :</th>
+        <td >
+            <input class="easyui-numberbox theme-textbox-radius"   name="index" data-options="min:0,max:99999,precision:0" />
+            <span style="color: #999;margin-left: 20px">数字越大越靠前显示</span>
+        </td>
+    </tr>
+</table>
+
+<%-contentFor('head_extension')%>
+ <!--以下三个是用于上传的-->
+ <script type="text/javascript" src='/scripts/jquery.ui.widget.js'></script>
+ <script type="text/javascript" src='/scripts/jquery.fileupload.js'></script>
+ <script type="text/javascript" src="/scripts/framework/framework_uploader.js"></script>
+ <script>
+    var detailForm,currentType;
+    $(document).ready(function () {
+        detailForm = new detailForm('form', {
+            initForm:function(option){
+                switchType(0);
+            },
+            bindOption:{
+                url: urlConfig.apiUrl.music.base, 
+                successFunc: function (result) {
+                        $('#audiofile')[0].setImage(result.file);
+
+                }
+            },
+            saveOption: {
+                button: '#lnkSave', url:urlConfig.apiUrl.music.base,
+                beforeFunc:function(option){
+                    if ($.isNullOrEmpty($('#audiofile')[0].getImage()))
+                    {
+                        $.messager.alert('提示','请上传音频文件','info');
+                        return false;
+                    }
+                    return true;
+                },
+                successFunc: function (result) {
+                    dialogHelper.closeModal(result);
+                }
+            }
+        });
+        detailForm.bindForm();
+    });
+</script>

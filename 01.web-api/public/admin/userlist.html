@@ -1,0 +1,37 @@
+﻿
+<div class="main" id="bt_index_layout_center" data-options="region:'center',title:'用户管理'">
+    <table id="dg"></table>
+    <div id="tools_1" style="width: 100%;">
+        <div style="margin-bottom: 5px">
+            <table class="form_table" style="padding-top: 10px;">
+                <tr>
+                    <th>姓名/账号:</th>
+                    <td>
+                        <input class="easyui-textbox theme-textbox-radius" style="width:90px" search-options="key:'name'" style="margin-left: 0px;" type="text" value="" /></td>
+                    <th>状态:</th>
+                    <td style="padding-right: 5px;">
+                        <select id="ddlenabled"  search-options="key:'status',method:'combobox'"  class="easyui-combobox theme-textbox-radius" data-options="editable:false,panelHeight:'auto'"  style="width: 130px; height: 28px;">
+                            <option value="" selected>全部</option>
+                            <option value="0">正常</option>
+                            <option value="1">禁用</option>
+                        </select></td>
+                    <td>
+                        <a href="#" class="easyui-linkbutton button-blue fa-4x" style="width:90px;" id="btnSearch"><i class="fa fa-search"></i>&nbsp;查询</a>
+                        <a href="#" class="easyui-linkbutton" style="width:90px;" id="btnReset"><i class="fa fa-refresh"></i>&nbsp;重置</a>                    
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="easyui-panel" style="padding: 5px; border: none">
+            <a href="#" id="btnNewUser" class="easyui-linkbutton button-blue fa-4x" style="width:80px;" id="btnSearch"><i class="fa fa-plus"></i>&nbsp;新增</a>
+            <a href="#" id="btnDeleteUser" class="easyui-linkbutton button-red fa-4x" style="width:80px;" id="btnSearch"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+            <a href="#" class="easyui-linkbutton button-grey fa-4x" style="width:80px;"  onclick="setUserEnableStatus(1)"><i class="fa fa-user-circle-o"></i>&nbsp;停用</a>
+            <a href="#" class="easyui-linkbutton button-green fa-4x" style="width:80px;"  onclick="setUserEnableStatus(0)"><i class="fa fa-user-o"></i>&nbsp;启用</a>
+            <a href="#" id="btnNewUser" class="easyui-linkbutton button-blue fa-4x" style="width:100px;" onclick="resetPassword()"><i class="fa fa-key"></i>&nbsp;密码重置</a>
+        </div>
+    </div>
+</div>
+
+
+<%- contentFor('head_extension') %>
+<script type="text/javascript" src="/admin/scripts/userlist.js"></script>

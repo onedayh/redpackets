@@ -1,0 +1,47 @@
+﻿<div class="main"  data-options="region:'center',title:'',border:false" style="border:none;">
+    <table id="dg"></table>
+    <div id="tools_1">
+        <div style="margin-bottom: 5px">
+            <table  style="padding-top: 3px;" class="form_table">
+                <tr>
+                    <th>搜索内容:</th>
+                    <td>
+                        <input class="easyui-textbox theme-textbox-radius"  search-options="key:'keyword'"  style="width: 110px;"  type="text"/>
+                    </td>
+                    <th>创建日期 :</th>
+                    <td>
+                        <input id="startdate" class="easyui-datebox theme-textbox-radius" style="width:140px"  search-options="method:'datebox',key:'startdate'" />
+                        &nbsp;&nbsp;至 &nbsp;&nbsp;
+                        <input  id="enddate"  class="easyui-datebox theme-textbox-radius" style="width:140px"  search-options="method:'datebox',key:'enddate'" />
+                    </td>
+                    <th>支付方式:</th>
+                    <td><select  search-options="key:'paytype'" class="easyui-combobox theme-textbox-radius" data-options="editable:false,panelHeight: 'auto'"  style="width: 100px;">
+                            <option value="" selected>全部</option>
+                            <option value="0">微信支付</option>
+                            <option value="1">人工支付</option>
+                        </select>
+                    </td>
+                    <th>
+                        <a href="#" class="easyui-linkbutton button-blue fa-4x" style="width:90px;" id="btnSearch"><i class="fa fa-search"></i>&nbsp;查询</a>
+                        <a href="#" class="easyui-linkbutton" style="width:90px;" id="btnReset"><i class="fa fa-refresh"></i>&nbsp;重置</a>                    
+                    </th>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div> 
+
+<%- contentFor('head_extension') %>
+ <script type="text/javascript" src="./scripts/incomelist.js"></script>
+ <style>
+     .redtable {width: 160px;border: none}
+     .redtable td {padding: 6px 5px 6px 5px;border: none}
+     .userlogo {width:30px;border:1px solid #CCC;border-radius: 50%;vertical-align:middle;}
+     .username {padding-left:2px;white-space:normal;word-wrap:break-word;}
+     .pay-wechat{color:#41aa00}
+    .pay-wallet{color:#000}
+ </style>
+
+ 
+ 

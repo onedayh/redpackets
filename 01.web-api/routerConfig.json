@@ -1,0 +1,19 @@
+﻿[
+  {"include":"../controller/framework/frameworkrouter.json"},
+  {"include":"../controller/crm/router.json"},
+  {"include":"../controller/finance/router.json"},
+  {"include":"../controller/platform/router.json"},
+  {"include":"../controller/redbag/router.json"},
+  {"include":"../controller/mini/router.json"},
+  {"include":"../controller/component/router.json"},
+  {
+    "controller": "../controller/homecontroller.js",
+    "baseUrl":"/api/home",
+    "authorize":true
+  },
+  {
+    "controller": "../controller/analysis/analysiscontroller.js",
+    "baseUrl": "/api/analysis",
+    "authorize": false
+  }
+]

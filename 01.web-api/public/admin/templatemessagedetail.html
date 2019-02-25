@@ -1,0 +1,48 @@
+﻿<div id="tabArticle" class="easyui-tabs" data-options="fit:true,plain:true">
+    <div title="基础信息" style="padding: 10px;" data-options="fit:true">
+        <table align="center" class="form_table" style="margin-left: 10px; padding-top: 5px;width:95%" data-options="fit:true">
+            <tr>
+                <th style="width: 120px">消息Key :</th>
+                <td colspan="3">
+                    <input class="easyui-textbox theme-textbox-radius" style="width:85%"  name="key" data-options="prompt:'消息KEY',missingMessage:'请输入消息KEY',required:true,validType:'length[1,128]'" />
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 120px">消息ID :</th>
+                <td colspan="3">
+                    <input class="easyui-textbox theme-textbox-radius" style="width:85%"  name="msgid" data-options="prompt:'模版消息ID',missingMessage:'请输入消息ID',required:true,validType:'length[1,128]'" />
+                </td>
+            </tr>
+            <tr>
+                <th>消息截图 :</th>
+                <td colspan="3">
+                    <imageUpload  style="width: 200px;height:150px" id="imgtemplate" data-option="'key':'message', 'name':'content'"></imageUpload>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<%-contentFor('head_extension')%>
+ <!--以下三个是用于上传的-->
+ <script type="text/javascript" src='/scripts/jquery.ui.widget.js'></script>
+ <script type="text/javascript" src='/scripts/jquery.fileupload.js'></script>
+ <script type="text/javascript" src="/scripts/framework/framework_uploader.js"></script>
+<script>
+    var detailForm;
+    $(document).ready(function () {
+        formHelper.initializePopup();
+        detailForm = new detailForm('form', {
+            bindOption: { url: urlConfig.apiUrl.templatemessage.base,successFunc:function(result){
+                $('#imgtemplate')[0].setImage(result.content)
+            }},
+            saveOption: {
+                button: '#lnkSave', url: urlConfig.apiUrl.templatemessage.base,
+                successFunc: function (result) {
+                    dialogHelper.closeModal(result);
+                }
+            }
+        });
+        detailForm.bindForm();
+    });
+
+</script>

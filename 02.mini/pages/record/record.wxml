@@ -1,0 +1,58 @@
+<import src="../../templates/template.wxml"/>
+<wxs module="filters" src="../../filters/filter.wxs" />
+<nav-bar title="我的记录" showBack/>
+<view style="padding-top: {{pagePt}}px">
+    <view class="tab flex-around">
+        <view bindtap="changeTab" class="tab-item flex-mid {{acTab === index ? 'tab-ac' : ''}}" wx:for="{{tabList}}" wx:key="index" id="{{index}}">{{item}}</view>
+    </view>
+    <view class="total bg-white flex-around">
+        <view class="left-wrap flex-col-mid">
+            <view class="num">{{filters.toFix(totalMoney)}}</view>
+            <view class="des">总计（元）</view>
+        </view>
+        <view class="left-wrap flex-col-mid">
+            <view class="num">{{totalCount}}</view>
+            <view class="des">数量（个）</view>
+        </view>
+    </view>
+    <view hidden="{{acTab}}" class="bg-white set-item" catchtap="goDetail" id="{{item.id}}" wx:for="{{setList}}" wx:key="index">
+        <image class="set-left" catchtap="goCanvas" data-status="{{item.status}}" data-robbed="{{item.robbed}}" data-roll="{{item.rollback}}" data-id="{{item.id}}" src="{{imageBaseUrl + item.redcover}}"></image>
+        <view class="set-right {{item.rollback ? 'che' : ''}} {{item.robbed ? 'guang' : ''}}">
+            <view class="set-name font-bold one-line">{{item.topic}}</view>
+            <view class="set-des"><text class="font-grey">红包金额 : </text>{{filters.toFix(item.amount)}}元 / {{item.total}}个</view>
+            <view class="set-des"><text class="font-grey">已发金额 : </text>{{filters.toFix(item.gotmoney)}}元 / {{item.gotcount}}个</view>
+            <view class="set-bot">
+                <form wx:if="{{item.status === 0}}" report-submit catchsubmit="pay">
+                    <button class="set-btn" id="{{item.id}}" data-type="pay" data-index="{{index}}" form-type="submit">塞钱进红包</button>
+                </form>
+                 <form wx:if="{{!item.rollback && !item.robbed && item.status===1}}" report-submit catchsubmit="rollback">
+                    <button class="set-btn black-btn" id="{{item.id}}" data-index="{{index}}" data-type="back" form-type="submit">撤回红包</button>
+                </form>
+                <form wx:if="{{!item.rollback && !item.robbed && item.status === 1}}" report-submit catchsubmit="sharePoster">
+                    <button class="set-btn black-btn" id="{{item.id}}" data-type="poster" form-type="submit">海报分享</button>
+                </form>
+                <form wx:if="{{!item.rollback && !item.robbed && item.status === 1}}" report-submit catchsubmit="shareFormId">
+                    <button class="set-btn" bindtouchstart="sharePacket" open-type="share" id="{{item.id}}" form-type="submit" data-type="share" data-share="{{item.share}}" data-topic="{{item.topic}}">分享红包</button>
+                </form>
+                <!--<form report-submit bindsubmit="">-->
+                    <!--<button class="set-btn edit-btn" data-type="edit" form-type="submit">编辑</button>-->
+                <!--</form>-->
+            </view>
+        </view>
+    </view>
+    <view class="get-wrap bg-white" >
+        <view class="get-item flex-btw bg-white" hidden="{{!acTab}}" wx:for="{{getList}}" wx:key="index">
+            <view class="get-left">
+                <image class="get-logo" src="{{imageBaseUrl + item.logo}}"></image>
+                <view class="get-name one-line">{{item.topic}}</view>
+            </view>
+            <view class="get-right">
+                <view class="font-grey get-date">{{item.date}}</view>
+                <view class="font-red font-bold">+{{filters.toFix(item.money)}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="feedback flex-mid" wx:if="{{isLoad0 && setList.length > 0 && feedback0 && acTab === 0}}">{{feedback0}}</view>
+    <view class="feedback flex-mid" wx:if="{{isLoad1 && getList.length > 0 && feedback1 && acTab === 1}}">{{feedback1}}</view>
+    <template wx:if="{{(acTab === 0 && setList.length === 0 && isLoad0) || (acTab === 1 && getList.length === 0 && isLoad1)}}" is="empty" data="{{...empty}}" />
+</view>

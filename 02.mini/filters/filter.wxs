@@ -1,0 +1,12 @@
+var filters = {
+	toFix: function (value) {
+		return parseFloat(value).toFixed(2)//此处2为保留两位小数
+	},
+	indexOf: function (target, key) {
+		return target.indexOf(key) > -1 ? true : false
+	}
+}
+module.exports = {
+	toFix: filters.toFix,
+	indexOf: filters.indexOf
+}

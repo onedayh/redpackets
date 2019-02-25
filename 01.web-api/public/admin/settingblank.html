@@ -1,0 +1,78 @@
+﻿
+<div data-options="region:'center',title:''"  style="border: none;">
+    <table class="form_table" style="padding: 25px 20px;width:90%">
+        <tr>
+            <th style="width:120px">送审模式</th>
+            <td>
+              <input class="easyui-switchbutton" name="releasecode" id="auditmode" data-options="onText:'开启', offText:'关闭'"/>
+            </td>
+          </tr>
+        <tr>
+            <th style="width:120px">应用送审图片 :
+            </th>
+            <td colspan="3" style="color: #999">
+                该图片用于提交小程序进行官方审核时显示的图片,请上传满屏图片
+            </td>
+        </tr>
+        <tr>
+            <th></th>
+            <td style="width:160px" colspan="3">
+                <imageUpload id="imgAudit" style="width:150px;height:200px" data-option="'key':'poster', 'name':'auditimage'"></imageUpload>
+            </td>
+        </tr>
+        <tr>
+            <th style="width:100px">红包服务费 :</th>
+            <td  colspan="3" >
+                <input name="servicerate" class="easyui-numberbox theme-textbox-radius" value="2"  style="width:90px" data-options="min:0,max:100,precision:2,suffix:'%'"/>
+            </td> 
+        </tr>
+        <tr>
+            <th style="width:100px">最低提现 :</th>
+            <td  colspan="3" >
+                <input name="withdraw" class="easyui-numberbox theme-textbox-radius" value="2"  style="width:90px" data-options="min:0,max:9999,precision:2"/>
+            </td> 
+        </tr>
+        <tr>
+            <th style="width:100px">默认红包主题 :</th>
+            <td  colspan="3" >
+                <input name="topic" class="easyui-textbox theme-textbox-radius" value="{username}给您拜年了"  style="width:200px" data-options="prompt:'给您拜年了'"/>
+            </td> 
+        </tr>
+        <tr>
+            <th style="width:100px">默认红包祝福 :</th>
+            <td  colspan="3" >
+                <input name="bless" class="easyui-textbox theme-textbox-radius" value="大吉大利 猪年快乐"  style="width:80%;height:50px" data-options="multiline:true,prompt:'大吉大利 猪年快乐'"/>
+            </td> 
+        </tr>
+        
+
+    </table>
+    <div style="border: none;height: 60px;width:100%">
+        <div class="dialog-button" style="text-align: center; padding: 15px 125px 15px 30px;">
+            <a href="#" class="easyui-linkbutton button-blue fa-4x" style="width:110px;height:34px" id="lnkSave"><i class="fa fa-save"></i>&nbsp;&nbsp;保存</a>
+        </div>
+    </div>
+</div>  
+
+
+<script type="text/javascript" src="/scripts/framework/framework_combobox.js"></script>
+<!--以下三个是用于上传的-->
+<script type="text/javascript" src='/scripts/jquery.ui.widget.js'></script>
+<script type="text/javascript" src='/scripts/jquery.fileupload.js'></script>
+<script type="text/javascript" src="/scripts/framework/framework_uploader.js"></script>
+<script type="text/javascript" src="/admin/scripts/systemsetting.js"></script>
+<style>
+    .tagbox-label {
+        height: 18px !important;
+        line-height: 14px !important;
+        position: relative;
+        display: block;
+        margin: 5px 0 0 4px;
+        padding: 5px 20px 0 4px;
+        float: left;
+        text-decoration: none;
+        border-radius: 3px;
+        background: #1b8cf2;
+        color: #fff;
+    }
+</style>

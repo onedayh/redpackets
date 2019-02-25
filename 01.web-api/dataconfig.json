@@ -1,0 +1,379 @@
+﻿{
+  "user":{
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS * from vw_sys_user where 1=1",
+      "sort": "name",
+      "search": 
+      [
+        {"pattern": " and (name like '%@name@%' or account like '%@name@%') "},
+        {"pattern": " and disabled = @status@ "}
+      ]
+    },
+    "detail": {
+       "primary":"user_id",
+       "field": [
+        {"name": "user_id","format": "","nullValue": "uuid()","mapping": "id","action":"create" },
+        {"name": "user_name","format": "","nullValue": "","mapping": "name"},
+        {"name": "user_account","format": "","nullValue": "","mapping": "account"},
+        {"name": "user_photo","format": "","nullValue": "","mapping": "photo"},
+        {"name": "user_password","format": "","nullValue": "value.a123456","mapping": "password","action":"create","direction":"backonly"},
+        {"name": "rec_creator","format": "","nullValue": "userid()","mapping": "","direction":"backonly","action":"create"},
+        {"name": "rec_create_date", "format": "", "nullValue": "now()","mapping": "","action":"create","direction":"backonly"},
+        {"name": "rec_updator","format": "","nullValue": "userid()","mapping": "","direction":"backonly"},
+        {"name": "rec_update_date","format": "","nullValue": "now()","mapping": "","direction":"backonly"}
+
+      ]
+    }
+  },
+  "roles":{
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS role_id,role_key,role_name,role_admin from fw_roles where rec_isdeleted=0",
+      "sort": "role_name",
+      "search":[{"pattern": " and role_name like '%@name@%' "}],
+      "field": [
+        {"name": "role_id","format": "","nullValue": "","mapping": "id"},
+        {"name": "role_name","format": "","nullValue": "","mapping": "name"},
+        {"name": "role_key","format": "","nullValue": "","mapping": "key"},
+        {"name": "role_admin","format": "","nullValue": "","mapping": "admin"}
+         
+      ]
+    },
+    "detail": {
+       "primary":"role_id",
+       "field": [
+        {"name": "role_id","format": "","nullValue": "uuid()","mapping": "id","action":"create" },
+        {"name": "role_name","format": "","nullValue": "","mapping": "name"},
+        {"name": "role_key","format": "","nullValue": "","mapping": "key"},
+        {"name": "role_admin","format": "","nullValue": "","mapping": "admin"}
+      ]
+    }
+  },
+  "dictionary":{
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS dict_id,dict_name,dict_code,dict_index from fw_dict where rec_isdeleted=0",
+      "sort": "dict_index",
+      "field": [
+        {"name": "dict_id","format": "","nullValue": "","mapping": "id"},
+        {"name": "dict_name","format": "","nullValue": "","mapping": "name"},
+        {"name": "dict_code","format": "", "nullValue": "", "mapping": "code"}
+      ]
+    },
+    "detail": {
+       "primary":["dict_id"],
+       "field": [
+        {"name": "dict_id","format": "","nullValue": "uuid()","mapping": "id","action":"create" },
+        {"name": "dict_name","format": "","nullValue": "","mapping": "name"},
+        {"name": "dict_code","format": "","nullValue": "","mapping": "code"},
+        {"name": "dict_index","format": "","nullValue": "","mapping": "index"}
+      ]
+    }
+  },
+  "dictionaryitem":{
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS rec_id,fw_dict.dict_name, item_name,item_value,ext_field1 from fw_dict_item inner join fw_dict on fw_dict_item.dict_id=fw_dict.dict_id where fw_dict.rec_isdeleted=0",
+      "sort": "item_value",
+      "search":[
+        {"pattern": "and fw_dict_item.dict_id='@query.dict_id@'"},
+        {"pattern": "and fw_dict.dict_name='@query.dict_name@'"},
+        {"pattern": "and fw_dict.dict_code='@query.dict_code@'"}
+      ],
+      "field": [
+        {"name": "rec_id","format": "","nullValue": "","mapping": "id"},
+        {"name": "dict_name","format": "","nullValue": "","mapping": "dictname"},
+        {"name": "item_name","format": "","nullValue": "","mapping": "name"},
+        {"name": "item_value","format": "", "nullValue": "", "mapping": "value"},
+        {"name": "ext_field1","format": "", "nullValue": "", "mapping": "ext1"}
+      ]
+    },
+    "detail": {
+       "primary":["rec_id"],
+       "field": [
+        {"name": "rec_id","format": "","nullValue": "uuid()","mapping": "id","action":"create" },
+        {"name": "item_name","format": "","nullValue": "","mapping": "name"},
+        {"name": "item_value","format": "","nullValue": "","mapping": "value"},
+        {"name": "dict_id","format": "","nullValue": "","mapping": "dict_id"},
+        {"name": "ext_field1","format": "","nullValue": "","mapping": "ext1"}
+      ]
+    }
+  },
+  "function":{
+    "detail": {
+       "primary":"fun_id",
+       "field": [
+        {"name": "fun_id","format": "","nullValue": "uuid()","mapping": "id","action":"create" },
+        {"name": "fun_parent_id","format": "","nullValue": "","mapping": "pid"},
+        {"name": "fun_name","format": "","nullValue": "","mapping": "name"},
+        {"name": "fun_type","format": "","nullValue": "0","mapping": "type"},
+        {"name": "fun_open","format": "","nullValue": "0","mapping": "open"},
+         {"name": "fun_url","format": "","nullValue": "","mapping": "url"},
+          {"name": "fun_icon","format": "","nullValue": "","mapping": "icon"},
+          {"name": "fun_index","format": "","nullValue": "","mapping": "index"},
+        {"name": "rec_creator","format": "","nullValue": "userid()","mapping": "","direction":"backonly","action":"create"},
+        {"name": "rec_create_date", "format": "", "nullValue": "now()","mapping": "","action":"create","direction":"backonly"},
+        {"name": "rec_updator","format": "","nullValue": "userid()","mapping": "","direction":"backonly"},
+        {"name": "rec_update_date","format": "","nullValue": "now()","mapping": "","direction":"backonly"}
+      ]
+    }
+  },
+  "systemsetting":{
+    "detail": {
+       "primary":"setting_id",
+       "field": [
+        {"name": "setting_id","format": "","nullValue": "uuid()","mapping": "id","action":"create" },
+        {"name": "setting_json","format": "","nullValue": "","mapping": "json"},
+        {"name": "rec_creator","format": "","nullValue": "userid()","mapping": "","direction":"backonly","action":"create"},
+        {"name": "rec_create_date", "format": "", "nullValue": "now()","mapping": "","action":"create","direction":"backonly"},
+        {"name": "rec_updator","format": "","nullValue": "userid()","mapping": "","direction":"backonly"},
+        {"name": "rec_update_date","format": "","nullValue": "now()","mapping": "","direction":"backonly"}
+      ]
+    }
+  },
+  "member":{
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS * from vw_users where 1=1",
+      "sort": "createdate desc",
+      "search":[
+        {"pattern": " and name like '%@name@%' "}
+      ]
+    }
+  },
+  "redbags":{
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS * from vw_redbag po where 1=1",
+      "sort": "createdate desc",
+      "search":[
+         {"pattern": " and uid = '@params.id@' "},
+         {"pattern": " and (username like '%@keyword@%' or topic like '%@keyword@%') "},
+         {"pattern": " and  type = @type@ "},
+         {"pattern": " and  status @status@ "},
+         {"pattern": " and createdate>='@startdate@ 00:00:00' "},
+         {"pattern": " and createdate<='@enddate@ 23:59:59' "}
+      ]
+    }
+  },
+  "income":{
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS 0 as footer, po.* from vw_income po where 1=1",
+      "countsql": "select 1 as footer, ifnull(sum(amount),0) as amount,ifnull(sum(service),0) as service,ifnull(sum(gotamount),0) as gotamount,ifnull(sum(remainamount),0) as remainamount from vw_income  where 1=1",
+      "sort": "createdate desc",
+      "search":[
+         {"pattern": " and (username like '%@keyword@%' or topic like '%@keyword@%' and operator like '%@keyword@%') "},
+         {"pattern": " and paytype=@paytype@ "},
+         {"pattern": " and createdate>='@startdate@ 00:00:00' "},
+         {"pattern": " and createdate<='@enddate@ 23:59:59' "}
+      ]
+    }
+  },
+  "withdraw":{
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS 0 as footer,wd.* from vw_withdraw wd where 1=1",
+      "sort": "date desc",
+      "countsql": "select SQL_CALC_FOUND_ROWS 1 as footer,sum(money) as money from vw_withdraw wd where status=1 ",
+      "search":[
+         {"pattern": " and username like '%@name@%' "},
+         {"pattern": " and status =@transfer@ "}
+      ],
+      "footer":[
+        {"name": "footer"},
+        {"name": "money"}
+      ]
+    }
+  },
+  "background":{
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS bg_id as id,bg_layout as layout, bg_poster as poster, bg_title as title,bg_file as bgfile,bg_share as bgshare,bg_enabled as enabled,bg_default as isdefault from bas_red_background where 1=1",
+      "sort": "bg_index desc",
+      "search":[
+        {"pattern": " and bg_title like '%@title@%' "},
+        {"pattern": " and bg_enabled = @query.enabled@ "}
+      ]
+    },
+    "detail": {
+       "primary":"bg_id",
+       "field": [
+        {"name": "bg_title","format": "","nullValue": "","mapping": "title"},
+        {"name": "bg_share","format": "","nullValue": "","mapping": "share"},
+        {"name": "bg_file","format": "","nullValue": "","mapping": "file"},
+        {"name": "bg_layout","format": "","nullValue": "","mapping": "layout"},
+        {"name": "bg_poster","format": "","nullValue": "","mapping": "poster"},
+        {"name": "bg_index","format": "","nullValue": "","mapping": "index"}
+      ]
+    }
+  },
+  "templatemessage":{
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS id,message_key as msgkey,message_id as msgid,message_content as content from mini_message_template where app_id = 'wxef31174b9f28d7d3' and rec_isdeleted = 0 ",
+      "sort": "message_key"
+    },
+    "detail": {
+      "primary":"id",
+      "field": [
+        {"name": "message_key","format": "","nullValue": "","mapping": "key"},
+        {"name": "message_content","format": "","nullValue": "","mapping": "content"},
+        {"name": "message_id","format": "","nullValue": "","mapping": "msgid"},
+        {"name": "app_id","format": "","nullValue": "value.wxef31174b9f28d7d3","action": "create"}
+      ]
+    }
+  },
+  "public":{
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS * from vw_publicinfo where 1=1 ",
+      "sort": "appname",
+      "search": 
+      [{"pattern": " and (appname like '%@keyword@%'  or appid like '%@keyword@%')"}]
+    },
+    "detail": {
+      "primary":"app_id",
+      "field": [
+        {"name": "app_name","format": "","nullValue": "","mapping": "appname"},
+        {"name": "app_type","format": "","nullValue": "","mapping": "type"},
+        {"name": "app_path","format": "","nullValue": "","mapping": "path"},
+        {"name": "app_param","format": "","nullValue": "","mapping": "param"},
+        {"name": "app_id","format": "","nullValue": "","mapping": "appid"},
+        {"name": "app_key","format": "","nullValue": "","mapping": "appkey"}
+      ]
+    }
+  },
+  "diversion":{
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS * from vw_diversion where appid='@params.id@' ",
+      "sort": "gotime desc",
+      "search": 
+      [{"pattern": " and (username like '%@name@%')"}]
+    }
+  },
+  "music":{
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS music_id as id,music_title as title,music_file as file,music_enabled as enabled,music_default as isdefault from bas_red_music where 1=1",
+      "sort": "music_index desc",
+      "search":[
+        {"pattern": " and music_title like '%@title@%' "}
+      ]
+    },
+    "detail": {
+       "primary":"music_id",
+       "field": [
+        {"name": "music_title","format": "","nullValue": "","mapping": "title"},
+        {"name": "music_file","format": "","nullValue": "","mapping": "file"},
+        {"name": "music_index","format": "","nullValue": "","mapping": "index"}
+      ]
+    }
+  },
+  "topic":{
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS * from vw_topic where 1=1",
+      "search":[
+        {"pattern": " and (title like '%@title@%' or content like '%@title@%') "},
+        {"pattern": " and typeid='@type@' "}
+      ]
+    },
+    "detail": {
+       "primary":"topic_id",
+       "field": [
+        {"name": "topic_title","format": "","nullValue": "","mapping": "title"},
+        {"name": "topic_content","format": "","nullValue": "","mapping": "content"},
+        {"name": "topic_index","format": "","nullValue": "","mapping": "index"},
+        {"name": "typeid","format": "","nullValue": "","mapping": "typeid"}
+      ]
+    }
+  },
+  "allocuser":{
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS 0 as footer,seq_price as money,got_date as date,cu.user_id as userid,cu.user_name as username,cu.user_logo as userlogo from bus_redbag_alloc alloc inner join crm_user cu on alloc.user_id=cu.user_id where red_id=@params.id@",
+      "countsql": "select  1 as footer,count(1) as total,sum(seq_price) as money from bus_redbag_alloc alloc where red_id=@params.id@",
+      "sort": "got_date desc"
+    }
+  },
+  "order":{
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS 0 as footer, po.* from vw_all_orders po where appid='@appid()@'",
+      "countsql": "select 1 as footer, ifnull(sum(paytotal),0) as paytotal,ifnull(sum(rebatetotal),0) as rebatetotal from vw_all_orders  where appid='@appid()@' and status<>100",
+      "sort": "order_date desc",
+      "search":[
+         {"pattern": " and uid = '@params.id@' "},
+         {"pattern": " and (username like '%@keyword@%' or orderno like '%@keyword@%') "},
+         {"pattern": " and  @type@ "},
+         {"pattern": " and groupid = @groupid@ "},
+         {"pattern": " and @logstatus@ "},
+         {"pattern": " and paytype=@paytype@ "},
+         {"pattern": " and order_date>='@startdate@ 00:00:00' "},
+         {"pattern": " and order_date<='@enddate@ 23:59:59' "}
+      ]
+    },
+    "detail": {
+      "primary":"order_id",
+      "field": [
+       {"name": "order_id","format": "","nullValue": "","mapping": "orderid"},
+       {"name": "red_amount","format": "","nullValue": "","mapping": "amount"},
+       {"name": "service_total","format": "","nullValue": "","mapping": "service"},
+       {"name": "order_total","format": "","nullValue": "","mapping": "ordertotal"},
+       {"name": "order_status","format": "","nullValue": "","mapping": "status"},
+       {"name": "pay_date","format": "","nullValue": "","mapping": "paydate"}
+     ]
+   }
+  },
+  "feedback":{
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS rec_id,fb.user_id,user.user_name,user.user_logo,feedback_type,feedback_date,feebback_content,feedback_status from pf_feedback fb inner join crm_user user on fb.user_id=user.user_id where 1=1",
+      "sort": "feedback_date desc",
+      "field": [
+        {"name": "rec_id","format": "","nullValue": "","mapping": "id"},
+        {"name": "user_id","format": "","nullValue": "","mapping": "userid"},
+        {"name": "user_name","format": "","nullValue": "","mapping": "username"},
+        {"name": "user_logo","format": "","nullValue": "","mapping": "image"},
+        {"name": "feedback_type","format": "","nullValue": "","mapping": "type"},
+        {"name": "feedback_date","format": "","nullValue": "","mapping": "date"},
+        {"name": "feebback_content","format": "","nullValue": "","mapping": "content"},
+        {"name": "feedback_status","format": "","nullValue": "","mapping": "status"}
+      ]
+    }
+  },
+  "shareconfig":{
+    "list": {
+      "sqltype":"sql",
+      "sql": "select SQL_CALC_FOUND_ROWS * from pf_share_config where 1=1",
+      "sort": "share_route desc",
+      "search": 
+      [
+        {"pattern": " and (share_route like '%@route@%'  or share_name like '%@route@%')"}
+      ],
+      "field": [
+        {"name": "share_id","format": "","nullValue": "","mapping": "id"},
+        {"name": "share_name","format": "","nullValue": "","mapping": "name"},
+        {"name": "share_route","format": "","nullValue": "","mapping": "route"},
+        {"name": "share_image","format": "","nullValue": "","mapping": "image"},
+        {"name": "share_title","format": "","nullValue": "","mapping": "title"},
+        {"name": "share_disabled","format": "","nullValue": "","mapping": "disabled"}
+      ]
+    },
+    "detail": {
+       "primary":"share_id",
+       "primaryIsAutoIncrease":true,
+        "field": [
+          {"name": "share_route","format": "","nullValue": "","mapping": "route"},
+          {"name": "share_name","format": "","nullValue": "","mapping": "name"},
+          {"name": "share_image","format": "","nullValue": "","mapping": "image"},
+          {"name": "share_title","format": "","nullValue": "","mapping": "title"},
+          {"name": "share_disabled","format": "","nullValue": "","mapping": "disabled"},
+          {"name": "share_url","format": "","nullValue": "","mapping": "url"}
+      ]
+    }
+  }
+}

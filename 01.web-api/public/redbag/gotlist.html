@@ -1,0 +1,49 @@
+﻿<div class="main" data-options="region:'center',title:''" style="border:none">
+    <table id="dg"></table> 
+</div>
+<%- contentFor('head_extension') %>
+<style type="text/css">
+    .main .datagrid-row {height: 44px;}
+    .main .datagrid-cell{white-space:normal; }
+    .main .datagrid-cell img {max-height: inherit;}
+    .main .datagrid-cell-c2-logo {position: relative;}
+</style>
+<script>
+var memberlist;
+///初始化列表控件
+function getList(id) {
+     memberlist = new listForm('dg', {
+        //title: '应用系统列表',
+            url: urlConfig.apiUrl.redbags.alloc.format(id),
+            columns: [[
+                {
+                    field: 'userlogo', title: '',align:'center', halign:'center',width: 50
+                    , formatter: function (value, row, index) {
+                        var header = "<img src='" +value+ "' style='border:1px solid #ccc;border-radius: 50%;width:32px;height:32px;'>";
+                        return header;
+                    }
+                },
+                {field: 'username', title: '姓名',halign:'center', width: 90},
+                { field: 'money', title: '红包金额',align:'center', width: 100,sortable: true
+                 , formatter: function (value, row, index) {
+                        return $.formatMoney(value);
+                    }
+                },
+                { field: 'date', title: '领取时间',align:'center', width: 160
+                 , formatter: function (value, row, index) {
+                        return $.formatDate(value,'yyyy年MM月dd日 hh:mm',true);
+                    }
+                },
+            ]]
+        });
+    }
+    ///页面加载完毕后初始化目录树和列表
+    ///
+    $(document).ready(function () {
+        var id = $.getUrlParam('id');
+        getList(id);
+    });
+
+
+
+</script>

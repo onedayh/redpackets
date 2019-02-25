@@ -1,0 +1,3 @@
+[ 
+  {"routefolder":{"folder":"../controller/finance","baseUrl":"/api/finance","authorize": true}}
+]

@@ -1,0 +1,31 @@
+﻿<table class="form_table" style="padding-top: 10px;width:90%" data-options="fit:true">
+    <tr>
+        <th style="width:140px">字典编码: <font color='red'>*</font></th>
+        <td>
+            <input class="easyui-textbox theme-textbox-radius" name="code" data-options="missingMessage:'请输入字典编码',required:true,validType:'length[1,50]'" />
+        </td>
+    </tr>
+    <tr>
+        <th>字典名称: <font color='red'>*</font></th>
+        <td>
+            <input class="easyui-textbox theme-textbox-radius" style="width:200px" name="name" data-options="missingMessage:'请输入字典名称',required:true,validType:'length[1,50]'" />
+            </td>
+    </tr>
+</table>
+
+<%-contentFor('head_extension')%>
+<script>
+    var detailForm;
+    $(document).ready(function () {
+        detailForm = new detailForm('form', {
+            bindOption: { url: urlConfig.apiUrl.dictionary.base },
+            saveOption: {
+                button: '#lnkSave', url: urlConfig.apiUrl.dictionary.base,
+                successFunc: function (result) {
+                    dialogHelper.closeModal(result);
+                }
+            }
+        });
+        detailForm.bindForm();
+    });
+</script>

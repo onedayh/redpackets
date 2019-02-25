@@ -1,0 +1,134 @@
+<nav-bar title="创建红包" showIndex="{{showIndex}}"></nav-bar>
+<wxs module="filters" src="../../filters/filter.wxs" />
+<view class="page" style="padding-top: {{pagePt}}px">
+    <!--头像-->
+    <view class="up wrap" bindtap="changeLogo">
+        <image wx:if="{{logo}}" class="up-image" src="{{filters.indexOf(logo, 'https://') ? logo : imageBaseUrl + logo}}"></image>
+        <view wx:else="{{logo}}" class="up-image fake-logo"></view>
+        <text class="font-grey up-text">红包主头像(可用企业logo)</text>
+        <cover-view hidden="{{showTem || showMusic || showBless}}" class="help-wrap flex-mid" catchtap="goHelp">
+            <cover-image src="{{imageBaseUrl + helpImage}}" class="helper"></cover-image>
+        </cover-view>
+    </view>
+
+    <!--主题祝福-->
+    <view hidden="{{showTem || showMusic || showBless}}" class="theme wrap">
+        <input maxlength="15" value="{{topic}}" bindinput="inuptTopic" type="text" class="top-input" placeholder="{{defaulttopic}}" placeholder-class="pla-class"></input>
+        <textarea maxlength="40" value="{{bless}}" bindinput="inputBless" resize="false" class="textarea" style="width: {{blessList.length > 0 ? '620rpx' : '100%'}}" placeholder="{{defaultbless}}" placeholder-class="pla-class"></textarea>
+        <view catchtap="willBless" class="arr-wrap flex-mid" wx:if="{{blessList.length > 0}}">
+            <image class="arr-right" src="../../images/arr_right.png"></image>
+        </view>
+    </view>
+
+    <!--红包信息-->
+    <view class="type font-grey">当前为{{openType ? '普通' : '拼手气'}}红包，改为<text class="a" bindtap="changeOpenType">{{openType ? '拼手气' : '普通'}}红包</text> 
+    红包金额 1.00 ~ 200.00
+    </view>
+    <view class="wrap">
+        <view class="topic flex-btw">
+            <view class="{{openType ? '' : 'pin'}}">{{openType ? '单个' : '总'}}金额</view>
+            <input hidden="{{showTem || showMusic || showBless}}" type="digit" value="{{money}}" bindblur="blurMoney" bindinput="inputMoney" class="input" placeholder="0.00" placeholder-class="pla-class"></input>
+            元
+        </view>
+        <view class="topic flex-btw">
+            <text>红包个数</text>
+            <input hidden="{{showTem || showMusic || showBless}}" type="number" class="input" value="{{num}}" bindinput="inputNum" bindblur="blurNum" placeholder="红包个数" placeholder-class="pla-class"></input>
+            个
+        </view>
+        <!-- <view class="bless">领取方式</view> -->
+        <view class="type-wrap">
+            <view class="select" wx:for="{{playList}}" wx:key="index" id="{{index}}" bindtap="changePlayType">
+                <image class="type-icon" src="../../images/select{{index === playType ? '_ac' : ''}}.png"></image>
+                <text class="type-text {{index === playType ? 'type-ac' : ''}}">{{item}}</text>
+            </view>
+            <picker wx:if="{{playType}}" class="picker" mode="selector" range="{{peopleList}}" value="{{pickerIndex}}" bindchange="pickerChange">
+                <view class="num">
+                    <view class="people">{{people}}</view>人
+                </view>
+            </picker>
+        </view>
+    </view>
+
+    <!--自定义-->
+    <view class="type contact font-grey">需要更多个性化封面或公众号引流需求，请<button open-type="contact" class="server">联系芝麻客服</button></view>
+    <view class="wrap">
+        <view class="topic bg-line flex-btw" bindtap="chooseTemplate">
+            <text>红包背景</text>
+            <view>{{selectTemplate.title}}</view>
+        </view>
+        <view class="topic bg-line flex-btw" bindtap="chooseMusic">
+            <text>背景音乐</text>
+            <view>{{selectMusic.title}}</view>
+        </view>
+        <view class="topic flex-btw">
+            <text>公开到芝麻广场</text>
+            <switch color="#BC1224" checked="{{isPublic}}" bindchange="changePublic"></switch>
+        </view>
+    </view>
+    <form report-submit bindsubmit="createRedpacket">
+        <button class="pay-btn pay1 fixed flex-col-mid" open-type="{{openType}}" bindgetuserinfo="getUserInfo" disabled="{{!(logo && money && num && selectTemplate)}}" form-type="submit">
+            <text>塞钱进红包<text class="pay-money" wx:if="{{showMoney && showMoney != '0.00'}}">（￥ {{showMoney}}）</text></text>
+            <text wx:if="{{serviceMoney && serviceMoney != '0.00'}}" class="ser-money">含服务费{{serviceMoney}}元</text>
+        </button>
+    </form>
+</view>
+<view class="mode" catchtouchmove="true" animation="{{temAnimation}}" style="padding-top: {{pagePt}}px">
+    <swiper
+        wx:if="{{templateList.length > 0}}"
+        class="swp"
+        current="{{currentTemplate}}"
+        circular
+        previous-margin="80rpx"
+        next-margin="80rpx"
+        bindchange="changeTemplate"
+    >
+        <swiper-item class="swp-item" wx:for="{{templateList}}" wx:key="id">
+            <view class="item {{currentTemplate === index ? '' : 'smaller'}}" data-index="{{index}}" bindtap="selectTemplate" data-tem="{{item}}">
+                <image mode="widthFix" class="bg" src="{{imageBaseUrl + item.file}}"></image>
+                <view class="bg-bot bg-white flex-col-mid">
+                    <view>{{item.title}}</view>
+                    <view class="ban">哆咪科技提供</view>
+                    <image class="sel-icon" src="../../images/select{{selectTemplate.id === item.id ? '_ac' : ''}}.png"></image>
+                </view>
+            </view>
+        </swiper-item>
+    </swiper>
+</view>
+<view class="mode music-mode" bindtap="closeMusic" catchtouchmove="true" animation="{{musicAnimation}}">
+    <view class="music-wrap">
+        <view hidden="{{!showMusic || showBless}}">
+            <view class="flex-col-mid record-wrap" catchtouchstart="startRecord" catchtouchmove="true" catchtouchend="endRecord" wx:if="{{showRecord}}">
+                <view class="record-bg flex-mid">
+                    <view class="record-icon flex-mid"></view>
+                    <view class="process-wrap">
+                        <view class="process-item process-left">
+                            <view class="circle-item circle-left {{recordText === '正在录制...' ? 'run-process-left' : ''}}"></view>
+                        </view>
+                        <view class="process-item process-right">
+                            <view class="circle-item circle-right {{recordText === '正在录制...' ? 'run-process-right' : ''}}"></view>
+                        </view>
+                    </view>
+                </view>
+                <text class="record-text">{{recordText}}</text>
+            </view>
+            <view class="record" catchtap="recordMine">
+                <image class="record-icon-mini" src="../../images/voice.png"></image>
+                <text class="font-bold">用自己的声音传递祝福</text>
+            </view>
+            <scroll-view scroll-y class="bg-white scroll">
+                <view wx:for="{{musicList}}" catchtap="listen" data-index="{{index}}" data-file="{{item.file}}" class="flex-btw music-item {{index === currentMusic ? 'font-red' : ''}}" wx:key="id">
+                    <view>{{item.title}}</view>
+                    <image wx:if="{{index === currentMusic}}" class="play {{playing ? 'playing' : ''}}" src="../../images/playing.png"></image>
+                </view>
+            </scroll-view>
+            <button class="pay-btn" bindtap="selectMusic">确定</button>
+        </view>
+        <view hidden="{{showMusic || !showBless}}">
+            <view class="bless-title flex-mid bg-grey font-bold">祝福语</view>
+            <scroll-view scroll-y class="bg-white scroll1">
+                <view wx:for="{{blessList}}" catchtap="chooseBless" data-index="{{index}}" data-content="{{item.content}}" class="flex-btw bless-item" wx:key="id">{{item.content}}</view>
+            </scroll-view>
+        </view>
+    </view>
+</view>
+

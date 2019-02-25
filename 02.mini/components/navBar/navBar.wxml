@@ -1,0 +1,7 @@
+<cover-view class="nav-bar" style="height: {{barPt + barHeight}}px; padding-top: {{barPt}}px; background-color: {{bgColor}}">
+    <cover-view class="bar-title {{theme}}">{{title}}</cover-view>
+    <cover-view bindtap="navHandle" class="icon-wrap" style="height: {{barHeight}}px" wx:if="{{showBack || showIndex}}">
+        <cover-image class="back_icon" wx:if="{{showBack}}" src="../../images/back_prev_{{theme}}.png"></cover-image>
+        <cover-image class="index_icon" wx:if="{{showIndex}}" src="../../images/back_index_{{theme}}.png"></cover-image>
+    </cover-view>
+</cover-view>

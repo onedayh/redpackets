@@ -1,0 +1,27 @@
+﻿<body>
+    <div id="main-layout" class="easyui-layout" style="height: 500px;">
+        <div data-options="region:'north'" style="overflow: hidden" >
+            <div id="tools_1" class="dialog-button" style="padding: 5px; text-align: right">
+                <a href="#" class="easyui-linkbutton button-blue fa-4x" style="width:90px;height:34px"  onclick="ConfirmSelected()"><i class="fa fa-check"></i>&nbsp; 确定</a>
+                <a href="#" class="easyui-linkbutton fa-4x"  style="width:100px;height:34px" onclick="dialogHelper.closeModal()"><i class="fa fa-sign-out"></i> &nbsp;取消</a>
+            </div>
+        </div>
+        <div data-options="region:'center',title:''">
+            <ul id="ulDirTree"></ul>
+        </div>
+    </div>
+</body>
+<%- contentFor('head_extension') %>
+<script type="text/javascript" src="/scripts/framework/framework_treeform.js"></script>
+<script type="text/javascript" src="/common/js/hierarchyselector.js"></script>
+    <style>
+        #tools_1.one
+        {
+            text-align: right;
+            width: 100%;
+            padding: 5px;
+        }
+        .tree-node{height:23px;padding-top: 5px;}
+         /* .tree-icon{padding-top: 3px;}  */
+         /* .tree-title{padding-top: 6px;} */
+    </style>

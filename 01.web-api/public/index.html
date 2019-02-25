@@ -1,0 +1,84 @@
+﻿<body class="easyui-layout" id="master">
+<!--class="cs-north"  id="divHead"-->
+    <div data-options="region:'north',border:false,bodyCls:'theme-header-layout'" >
+        <div class="theme-navigate">
+            <div class="right">
+                <a href="#" class="easyui-menubutton theme-navigate-user-button" data-options="menu:'.theme-navigate-user-panel'">
+                    <span id="hrefUserName">匿名</span>
+                </a>
+                <div class="theme-navigate-user-panel">
+                    <dl>
+                        <dd>
+                             <img id="userImage" src="/app_themes/insdep/images/portrait86x86.png" width="86" height="86">
+                            <b class="badge-prompt"><span id="spanUserName">匿名</span></b>
+                        </dd>
+                        <dt>
+                            <a class="theme-navigate-user-modify" href="#" onclick="editPersonalInfo()"><span id="userinfo">修改资料</span></a>
+                            <a class="theme-navigate-user-logout"  href='login'>注销</a>
+                        </dt>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+    <!--<div data-options="region:'west',border:true,split:true,title:'导航',minWidth:200" class="cs-west">-->
+    <div data-options="region:'west',border:false,bodyCls:'theme-left-layout'" style="width:150px; ">
+        <!--<div id="menu" class="bs-menu" style="margin: 5px"></div>-->
+            <!--正常菜单--> 
+            <div class="theme-left-normal">
+                <div class="left-control-switch theme-left-switch"><i class="fa fa-chevron-left fa-lg"></i></div>
+                <!--start class="easyui-layout"-->
+                <div class="easyui-layout" data-options="border:false,fit:true"> 
+                    <!--start region:'north'-->
+                    <div data-options="region:'north',border:false" style="height:20px;text-align:center">
+                    </div>   
+                    <!--end region:'north'-->
+
+                    <!--start region:'center'-->
+                    <div data-options="region:'center',border:false">
+                        <!--start easyui-accordion class="easyui-accordion"--> 
+                         <div id="menu" class="easyui-accordion" data-options="heightStyle :'content',border:false,fit:true"></div>
+                        <!--end easyui-accordion--> 
+
+                    </div>
+                    <!--end region:'center'-->
+                </div>  
+                <!--end class="easyui-layout"-->
+            </div>
+             <!--最小化菜单--> 
+            <div class="theme-left-minimal">
+                <ul class="easyui-datalist" id="minMenu" data-options="border:false,fit:true">
+                    <li><a class="left-control-switch"><i class="fa fa-chevron-right fa-2x"></i><p>打开</p></a></li>
+                </ul>
+            </div>
+    </div>
+    <div id="mainPanle" region="center" border="true" border="false">
+        <div id="tabs" class="easyui-tabs" fit="true" border="false">
+            <!--<div title="首页">
+            
+            </div>-->
+        </div>
+    </div>
+    <!-- <div class="cs-south" data-options="region:'south',border:false" style="text-align:center;height:26px;padding-top:3px;background:#37414d;color:#fff" id="footer">
+        Copyright © 2018 广州市轻码科技有限公司 All Rights Reserved
+    </div> -->
+    <div id="mm" class="easyui-menu" style="width: 120px;">
+        <div id="mm-tabupdate" data-options="iconCls:'icon-reload'">刷新</div>
+        <div class="menu-sep"></div>
+        <div id="mm-tabclose" data-options="iconCls:'icon-cancel'">关闭</div>
+        <div id="mm-tabcloseother" data-options="iconCls:'icon-otherwindow'">关闭其他</div>
+        <div id="mm-tabcloseall">关闭全部</div>
+    </div>
+</body>
+
+<%- contentFor('head_extension') %>
+<script>
+        var path = window.location.pathname;
+    if (path==='/' || path.indexOf('index.html')>=0) window.location.href = '/index';
+</script>
+<script type="text/javascript" src='/scripts/menu.js'></script>
+<script type="text/javascript" src='/scripts/framework/framework_menu.js'></script>
+<script type="text/javascript" src='/scripts/framework/framework_min_menu.js'></script>
+<script type="text/javascript" src='/scripts/framework/index.js'></script>

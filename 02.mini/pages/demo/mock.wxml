@@ -1,0 +1,4 @@
+<!--pages/mock/mock.wxml-->
+<view class="mockcontainer">
+  <image src="{{backgroundImg}}" mode="widthFix" style="width: 100%; height: auto;"></image>
+</view>

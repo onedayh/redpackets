@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src='/scripts/jquery-3.1.1.min.js'></script>
+    <script type="text/javascript" src="/scripts/framework/framework_common.js"></script>
+    <script>
+        var appid = $.getUrlParam('appid');
+        var userid =  $.getUrlParam('userid')
+        var redirect_uri =encodeURIComponent(`http://red.doomisoft.com/api/mini/web/authorized?appid=${appid}&userid=${userid}`);
+        var url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${redirect_uri}&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect`
+        window.location.href=url;
+    </script>    
+</head>
+
+</html>

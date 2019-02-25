@@ -1,0 +1,39 @@
+﻿<input name="pid" id="pid" style="display: none">
+<table class="form_table" width="100%" style="padding-top:10px;">
+    <tr>
+        <th style="width:90px">部门编码:</th>
+        <td>
+            <input class="easyui-textbox theme-textbox-radius" style="margin-left:0px;" type="text" name="code" data-options="missingMessage:'请输入部门编码！',required:true" value="" /></td>
+    </tr>
+    <tr>
+        <th>部门名称:</th>
+        <td>
+            <input class="easyui-textbox theme-textbox-radius" style="margin-left:0px;" type="text" id="deptname" name="name" data-options="missingMessage:'请输入部门名称！',required:true" value="" /></td>
+    </tr>
+    <tr>
+        <th>部门排序号:</th>
+        <td>
+            <input class="easyui-numberbox theme-textbox-radius" style="margin-left:0px;" type="text" name="index" value="" /></td>
+    </tr>
+</table>
+            
+<%-contentFor('head_extension')%>
+<script>
+var detailForm;
+$(document).ready(function () {
+    detailForm = new detailForm('form', {
+        bindOption: { url:urlConfig.apiUrl.department.base},
+        saveOption: {
+        button: '#lnkSave', url: urlConfig.apiUrl.department.base,
+            successFunc: function (result) {
+                result.text = $('#deptname').val();
+                dialogHelper.closeModal(result);
+            }
+        }
+    });
+    detailForm.bindForm();
+    if (detailForm.getCurrentAction() == 'addnew') {
+        $('#pid').val( $.getUrlParam("pid"));
+    }
+});
+</script>

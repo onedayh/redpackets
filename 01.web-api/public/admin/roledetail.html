@@ -1,0 +1,39 @@
+﻿<table class="form_table" style="padding-top: 30px;width:90%" data-options="fit:true">
+    <tr>
+        <th style="width: 100px;">角色 :</th>
+        <td>
+            <span id="spanName" style="font-weight:bold"></span>
+            <span id="spanAdmin" style="display: none" class="admin">管理员</span>
+        </td>
+    </tr>
+    <tr>
+        <th style="padding-top: 20px">用户 :</th>
+        <td>
+            <div style="width: 100%; height:300px; border: none;padding-top: 20px">
+                <div id="tools_1" style="width: 100%; ">
+                    <div class="easyui-panel" style="padding: 5px; border: none">
+                        <a href="#" class="easyui-linkbutton button-blue fa-4x" style="width:110px;height:34px" onclick="addUsers()"><i class="fa fa-plus"></i>&nbsp;添加用户</a>
+                        <a href="#" class="easyui-linkbutton button-red fa-4x" style="width:110px;height:34px" id="btnDeleteUser"><i class="fa fa-trash-o"></i>&nbsp;删除用户</a>
+            
+                    </div>
+                </div>
+                <table id="dgUsers" class="form_table" style="padding-top: 10px;" align="center">
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>
+<%-contentFor('head_extension')%>
+<style>
+    .admin{
+        padding: 2px 5px 2px 5px;
+        color:#fff;
+        border-color: #b52b27;
+        background: #b52b27;
+        border-radius: 3px;
+    }
+</style>
+ <script type="text/javascript" src="/admin/scripts/roledetail.js"></script>
+ <script type="text/javascript" src="/scripts/framework/framework_listform.js"></script>
+
+ 

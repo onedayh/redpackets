@@ -1,0 +1,55 @@
+﻿
+<div style="padding:20px 5px 50px 5px;height:400px;overflow:auto">
+    <ul id="templateImage">
+    </ul>
+</div>  
+<div style="text-align: center;padding-top: 5px;padding-bottom: 5px">
+    <a href="#" onclick="confirmTemplate()" class="easyui-linkbutton  button-blue" style="width: 110px;"><i class="fa fa-check"></i>&nbsp;&nbsp;确定</a>
+</div>
+ <!--以下三个是用于上传的-->
+ <link href="/redbag/scripts/style.css" rel="stylesheet" type="text/css">
+ <script>
+     var selectedItem={};
+    $(document).ready(function () {
+        initBackground();
+    });
+
+    function confirmTemplate(){
+        dialogHelper.closeModal(selectedItem);
+    }
+
+    function initBackground(){
+        ApiCaller.Get({url:urlConfig.apiUrl.background.base,
+                    data:{enabled:1},
+                    successFunc:function(result){
+                    var html=[];
+                    var defaultValue=null;
+                    if (result.rows.length>0){
+                        defaultValue = result.rows[0].value;
+                        result.rows.forEach(function(item){
+                            html.push('<li id=\'temp_'+item.id+'\' data-layout=\''+item.layout+'\' data-poster=\''+item.poster+'\' data-share=\''+item.bgshare+'\' data-info=\''+item.bgfile+'\' onclick="selectTemplate(\''+item.id+'\')">'+
+                                        '<div style="text-align:center;height:25px"><b>'+item.title+'</b></div>'+
+                                        '<br/><img src="'+urlConfig.base.imageBase+item.bgfile+'" />'+
+                                      '</li>')
+                        });
+                    }
+                    $('#templateImage').html(html.join());
+
+    }})
+}
+
+
+function selectTemplate(id){
+    var obj = $('#temp_'+id);
+    if (!obj.hasClass('selected')){
+      $('#templateImage li').removeClass('selected');
+      obj.addClass('selected');
+    }
+    selectedItem = {
+        file:obj.data('info'),
+        share:obj.data('share'),
+        poster:obj.data('poster'),
+        layout:obj.data('layout')
+    }
+  };
+</script>

@@ -1,0 +1,15 @@
+﻿{
+    "userheader":{"saveDir":"redbag/userheader/","fileName":"random","subFolder":"onebydate","output":"Original","fileFormat":""},
+    "merchant":{"saveDir":"redbag/merchant/","fileName":"random","subFolder":"onebydate","output":"Original","fileFormat":""},
+    "menuIcon":{"saveDir":"redbag/menuicon/","fileName":"keep","output":"Original","fileFormat":""},
+    "redbagimage":{"saveDir":"redbag/background/image/","fileName":"random","output":"Original","fileFormat":""},
+    "redbaglogo":{"saveDir":"redbag/logo/","fileName":"random","output":"Original","fileFormat":""},
+    "redbagmusic":{"saveDir":"redbag/background/music/","fileName":"random","output":"Original","fileFormat":""},
+    "voice":{"saveDir":"redbag/custom/voice/","fileName":"random","output":"Original","fileFormat":""},
+    "shareimage":{"saveDir":"redbag/config/share/","fileName":"random","output":"Original","fileFormat":""},
+    "orderimage":{"saveDir":"redbag/orderimage/","fileName":"random","output":"Original","fileFormat":""},
+    "poster":{"saveDir":"redbag/poster/","fileName":"random","output":"Original","fileFormat":""},
+    "qrcode":{"saveDir":"redbag/qrcode/","fileName":"random","subFolder":"onebydate","output":"Original","fileFormat":""},
+    "message":{"saveDir":"redbag/message/","fileName":"random","subFolder":"onebydate","output":"Original","fileFormat":""}
+    
+}

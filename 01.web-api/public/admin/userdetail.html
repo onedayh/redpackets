@@ -1,0 +1,47 @@
+﻿<div id="tabPersonal" class="easyui-tabs" data-options="fit:true">
+    <div title="<span class='tt-inner'>基本信息</span>" style="padding: 10px;" data-options="fit:true">
+        <table class="form_table" style="width:95%" data-options="fit:true">
+            <tr>
+                <th>头像:</th>
+                <td width="80px" >
+                    <imageUpload id="imgHead" style="width:96px;height:96px" data-option="'key':'userheader', 'name':'photo'"></imageUpload>
+                    <!-- <img src=" ../images/userheader.png" id="imgHead" width="90px" style="width:90px;height:90px;border-radius: 50%; cursor: pointer;border:1px solid #CCC;" />
+                    <input type="hidden" name="photo" id="userHead" /> -->
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3"></td>
+                <td> <span id="errormessage"></span></td>
+            </tr>
+            <tr>
+                <th>姓名:
+                </th>
+                <td>
+                    <input class="easyui-textbox theme-textbox-radius" id="name" name="name" data-options="missingMessage:'请输入姓名',invalidMessage:'输入内容不能超过50个字符!',required:true,validType:'length[1,50]'" />
+                </td>
+                <th>登录账号:
+                </th>
+                <td>
+                    <input class="easyui-textbox theme-textbox-radius" id="loginid" name="account" data-options="missingMessage:'请输入登录账号',required:true,validType:'length[1,50]'" />                              
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div title="<span class='tt-inner'>所属角色</span>" style="padding: 5px" data-options="fit:true">
+        <div id="tools_1" style="width: 100%;">
+            <div class="easyui-panel" style="padding: 5px; border: none">
+                <a href="#" class="easyui-linkbutton button-blue fa-4x" style="width:110px;height:34px" onclick="addRoles()"><i class="fa fa-plus"></i>&nbsp;分配角色</a>
+                <a href="#" class="easyui-linkbutton button-red fa-4x" style="width:110px;height:34px" id="lnkRemoveRole"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+            </div>
+        </div>
+        <table id="dgRoles" class="form_table" style="padding-top: 3px;" align="center">
+        </table>
+    </div>
+</div> 
+<%-contentFor('head_extension')%>
+<script type="text/javascript" src="/scripts/framework/framework_listform.js"></script>
+ <!--以下三个是用于上传的-->
+<script type="text/javascript" src='/scripts/jquery.ui.widget.js'></script>
+<script type="text/javascript" src='/scripts/jquery.fileupload.js'></script>
+<script type="text/javascript" src="/scripts/framework/framework_uploader.js"></script>
+<script type="text/javascript" src="/admin/scripts/userdetail.js"></script>

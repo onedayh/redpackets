@@ -1,0 +1,81 @@
+
+#templateImage ul {
+  position: relative;
+  margin: 30px auto;
+  width: 128px;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 20px;
+  color: #555;
+}
+
+
+#templateImage img {
+  position: absolute;
+  margin: 2px auto 5px auto;
+  top: 3; left: 0; bottom: 0; right: 0;
+  width: 72px;
+  /* height: 100%; */
+  border-radius: 1px;
+  box-shadow: 0 0 0 4px #fff;
+  cursor: pointer;
+  animation:        unselected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+  -o-animation:     unselected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+  -ms-animation:    unselected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+  -moz-animation:   unselected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+  -webkit-animation: unselected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+}
+
+#templateImage li {
+  position: relative;
+  margin: -5px;
+  width: 157px;
+  height: 180px;
+  float: left;
+}
+
+#templateImage li:before {
+  content: "\2714";
+  display: block;
+  position: absolute;
+  margin: auto;
+  top: 0; left: 0; bottom: 0; right: 0;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  background:  #00c09e;
+  border-radius: 50px;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  z-index: 10;
+  opacity: 0;
+  transition:         0.3s linear;
+  -o-transition:      0.3s linear;
+  -ms-transition:     0.3s linear;
+  -moz-transition:    0.3s linear;
+  -webkit-transition: 0.3s linear;
+  -o-user-select:      none;
+  -moz-user-select:    none;
+  -webkit-user-select: none;
+  cursor: pointer;
+}
+
+#templateImage li.selected:before {
+  opacity: 1;
+}
+
+/* img selection */
+
+#templateImage li.selected img {
+  box-shadow: 0 0 0 4px #00c09e;
+  animation:        selected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+  -o-animation:     selected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+  -ms-animation:    selected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+  -moz-animation:   selected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+  -webkit-animation: selected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+}

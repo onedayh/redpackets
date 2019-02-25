@@ -1,0 +1,119 @@
+<wxs module="filters" src="../../filters/filter.wxs"/>
+<nav-bar showBack="{{showBack}}" showIndex="{{showIndex}}" bgColor="transparent" theme="light"></nav-bar>
+<!--背景-->
+<view class="test-bg">
+    <view class="sdsd" style="height: {{isIpx ? pagePt + 'px' : 0}}"></view>
+    <image wx:if="{{redpacket.bgimage}}" mode="aspectFill" src="{{imageBaseUrl + redpacket.bgimage}}"
+           class="bg-image"></image>
+</view>
+
+<!--模板-->
+<view wx:if="{{isLoad}}" catchtouchmove="true"
+      style="padding-top: {{isIpx ? topScale * wrapT + pagePt + 'px;' : wrapT + 'rpx;'}}{{layout.wrap}}"
+      class="wrap">
+    <image wx:if="{{layout.logo}}" style="{{layout.logo}}" src="{{imageBaseUrl + redpacket.logo}}"></image>
+    <view wx:if="{{layout.topic}}" style="{{layout.topic}}">{{redpacket.topic}}</view>
+    <view wx:if="{{layout.bless}}" style="{{layout.bless}}">{{redpacket.bless}}</view>
+    <form class="open-form" report-submit bindsubmit="handleOpen">
+        <button style="top: {{isIpx ? topScale * btnT + pagePt + 'px;' : btnT + 'rpx;'}}{{layout.button}}"
+                open-type="{{authorized ? '' : 'getUserInfo'}}" bindgetuserinfo="getUserInfo" class="open-btn"
+                form-type="submit" id="open"></button>
+    </form>
+</view>
+
+<!--固定的-->
+<!--音乐-->
+<image src="../../images/icon_music.png" style="top: {{isIpx ? 130 * topScale + pagePt + 'px' : '130rpx'}}"
+       class="music {{musicPlay ? '' : 'music-pause'}}" wx:if="{{redpacket.bgmusic}}" bindtap="musicControl"></image>
+<!--结束倒计时-->
+<view wx:if="{{endingCount}}" style="top: {{isIpx ? 1258 * topScale + pagePt + 'px' : '1258rpx'}}" class="end-count">
+    活动结束倒计时 {{endingCount}}
+</view>
+<!--滚屏-->
+<view class="redpack-info" style="top: {{isIpx ? 124 * topScale + pagePt + 'px' : '124rpx'}}" wx:if="{{isLoad}}">
+    <view class="total-info" wx:if="{{redpacket.usercount}}">
+        已有{{redpacket.usercount}}人抢到红包，共抢走{{filters.toFix(redpacket.totalgrabbed)}}元红包
+    </view>
+    <swiper class="run-wrap" wx:if="{{redpacket.allocedusers && redpacket.allocedusers.length > 0}}" autoplay
+            iterval="2000" circular vertical>
+        <swiper-item wx:for="{{redpacket.allocedusers}}" wx:key="index">
+            <view class="run-item">
+                <image class="run-image" src="{{item.avatarUrl}}"></image>
+                <text class="one-line run-name">{{item.nickName}}</text>
+                <text>领取了{{filters.toFix(item.money)}}元</text>
+            </view>
+        </swiper-item>
+    </swiper>
+</view>
+
+<auth wx:if="{{showAuthorizationWnd && isLoad}}" bind:change="changeAuth"></auth>
+
+<view class="ending-wrap" animation="{{errorAnimation}}" hidden="{{!redPacketStatus || redPacketStatus === 1}}">
+    <image class="ending-image" src="../../images/ending.png"></image>
+    <view class="ending-content">
+        <image wx:if="{{redpacket.logo}}" class="ending-logo" src="{{imageBaseUrl + redpacket.logo}}"></image>
+        <view class="ending-text">{{endingText}}</view>
+        <view class="ending-text">{{endingTip}}</view>
+    </view>
+</view>
+
+<view class="mode active {{publicname ? 'public-name' : ''}}" catchtouchmove="true"
+      wx:if="{{redPacketStatus === 1 || publicname}}">
+    <!--已参与-->
+    <view class="active-wrap" wx:if="{{redPacketStatus === 1}}">
+        <view class="active-top">
+            <image class="active-logo" src="{{imageBaseUrl + redpacket.logo}}"></image>
+            <view class="active-topic one-line">{{redpacket.topic}}</view>
+            <view class="font-bold active-money">{{filters.toFix(money)}}</view>
+        </view>
+        <view class="active-content">
+            <form class="active-form" report-submit bindsubmit="pickCash">
+                <button wx:if="{{redpacket.playtype === '0' || (redpacket.playtype === '1' && redpacket.groupsuccess)}}"
+                        class="font-bold flex-mid active-btn" form-type="submit">提现
+                </button>
+                <form wx:if="{{redpacket.playtype === '1' && !redpacket.groupsuccess}}" class="open-form" report-submit bindsubmit="handleShare">
+                    <button class="font-bold flex-mid active-btn" form-type="submit" open-type="share">邀请好友</button>
+                </form>
+                <view class="active-btn go flex-mid" catchtap="luOnce">{{navigateMini ? '更多福利' : '我也来一发'}}</view>
+                <view wx:if="{{redpacket.playtype === '0'}}" class="share-text">{{type === 'set' ? '恭喜您抢到' +
+                    filters.toFix(money) + '元' : '您已开过此红包，抢到' + filters.toFix(money) + '元'}}
+                </view>
+            </form>
+            <view style="width: 100%" wx:if="{{redpacket.playtype === '1'}}">
+                <view class="share-text">{{lack > 0 ? '恭喜您抢到' + filters.toFix(money) + '元,继续再邀请'+lack+'个好友即可提现了!' :
+                    '恭喜您抢到' + filters.toFix(money) + '元，红包已转入余额'}}
+                </view>
+                <view class="group" wx:if="{{group && group.length > 0}}">
+                    <view class="flex-col-mid group-item" wx:for="{{group}}" wx:key="index">
+                        <image class="group-head" src="{{item.avatarUrl}}"></image>
+                        <view class="group-name one-line">{{item.nickName}}</view>
+                        <view class="group-money">
+                            <text wx:if="{{item.money}}" class="rmb">￥</text>
+                            {{item.money ? filters.toFix(item.money) : ''}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{tips}}" class="tips" bindtap="goSquare">{{tips}}</view>
+    </view>
+    <view wx:if="{{publicname}}" class="modal-content">
+        <view class="modal-title">抢包姿势</view>
+        <view class="modal-text">请进入
+            <button class="server" open-type="contact" bindtap="modelYes">芝麻客服</button>
+        </view>
+        <view class="modal-text">回复红包口令「
+            <text class="modal-open">{{command}}</text>
+            」
+        </view>
+        <view class="modal-text">长按关注公众号后回复
+            <text class="modal-open">“红包”</text>
+            即可抢红包
+        </view>
+        <button class="modal-yes flex-mid" open-type="contact" bindtap="modelYes">好的</button>
+    </view>
+</view>
+
+
+
+

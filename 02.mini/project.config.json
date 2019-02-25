@@ -1,0 +1,89 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.5.2",
+	"appid": "wxef31174b9f28d7d3",
+	"projectname": "%E8%8A%9D%E9%BA%BB%E5%8F%8B",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 6,
+			"list": [
+				{
+					"id": 0,
+					"name": "index",
+					"pathName": "pages/index/index",
+					"query": "id=306",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "提现",
+					"pathName": "pages/wallet/wallet",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/mine/mine",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "记录",
+					"pathName": "pages/record/record",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "创建红包",
+					"pathName": "pages/create/create",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "分配详情",
+					"pathName": "pages/record/alloced",
+					"query": "id=136"
+				},
+				{
+					"id": 6,
+					"name": "海报",
+					"pathName": "pages/canvas/canvas",
+					"query": "id=305",
+					"scene": null
+				}
+			]
+		}
+	}
+}

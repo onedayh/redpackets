@@ -1,0 +1,13 @@
+<view class="mode auth" catchtouchmove="true">
+    <!--授权弹窗-->
+    <view class="content-wrap">
+        <view class="logo-wrap">
+            <image class="logo" src="../../images/logo.png"></image>
+        </view>
+        <view class="auth-wrap">
+            <view class="auth-title">芝麻友申请获得以下权限</view>
+            <view class="auth-des">获得您的头像/昵称等</view>
+            <button open-type="getUserInfo" id="authbtn" bindgetuserinfo="_getUserInfo" class="auth-btn">授权登录</button>
+        </view>
+    </view>
+</view>

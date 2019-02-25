@@ -1,0 +1,63 @@
+/*
+  Easyui Of Insdep Theme 2.x 扩展面板
+  https://www.insdep.com/
+*/
+
+.user_info_standard_panel{ width: 100%; height: auto; overflow:auto; clear: both; position: relative; background:#fff;}
+.user_info_standard_panel .left{ float: left; width: 190px; padding:20px 0 20px 10px; }
+.user_info_standard_panel .right{ float: left;width:calc(100% - 350px);  padding:20px 10px 20px 20px; }
+.user_info_standard_panel .left,.user_info_standard_panel .right{ height:auto; }
+
+.user_info_standard_panel .panel_user_portrait{ margin:10px auto; }
+.user_info_standard_panel .panel_user_portrait,.user_info_standard_panel .panel_user_portrait img{width: 120px; height: 120px;}
+.user_info_standard_panel .panel_user_operation{width: 120px;}
+.user_info_standard_panel .panel_user_portrait img{ border-radius: 120px;border: 1px solid #777 }
+.user_info_standard_panel .panel_user_operation{ margin:0 auto 10px; text-align: center; }
+.user_info_standard_panel .panel_user_information,.user_info_standard_panel .panel_user_data,
+.user_info_standard_panel .panel_user_data,.user_info_standard_panel .panel_user_data ul,
+{ width:auto; height: auto;clear: both; }
+.user_info_standard_panel .panel_user_information h1,.user_info_standard_panel .panel_user_information p,.user_info_standard_panel .panel_user_information ul,.user_info_standard_panel .panel_user_information ul li{ display: block; }
+
+.user_info_standard_panel .panel_user_information h1{ font-size: 18px; font-weight: bold; margin:10px 0 2px; }
+.user_info_standard_panel .panel_user_information p{ color: #9b9b9b; margin: 0 0 10px; }
+.user_info_standard_panel .panel_user_information ul {}
+.user_info_standard_panel .panel_user_information ul li{ line-height:35px; }
+
+.user_info_standard_panel .panel_user_data{ border-top:1px solid #e8e8e8; margin:10px 0 0; padding: 10px 0 0; }
+.user_info_standard_panel .panel_user_data ul li{ float: left; padding: 0 30px 0 0; }
+.user_info_standard_panel .panel_user_data ul li span{ color: #9b9b9b; display:block; margin: 0 0 5px;}
+.user_info_standard_panel .panel_user_data ul li b{ font-size:16px; }
+
+
+.user_info_standard_panel.user_info_standard_simple{}
+.user_info_standard_panel.user_info_standard_simple .panel_user_portrait,.user_info_standard_panel.user_info_standard_simple .panel_user_portrait img{width: 90px; height: 90px;}
+.user_info_standard_panel.user_info_standard_simple .panel_user_operation{width:120px;}
+
+
+.user_info_standard_classic .panel_user_information{ float: left; padding: 0 20px 0 0; }
+.user_info_standard_classic .panel_user_data{ float: left; border-top:none; }
+
+.user_info_standard_classic .panel_user_data dl{ 
+	overflow: hidden; clear: both; padding: 20px 0 20px 20px; border-left: 1px solid #e8e8e8; 
+}
+.user_info_standard_classic .panel_user_data dl dd{ float: left; margin: 0 20px 0 0;  }
+.user_info_standard_classic .panel_user_data dl dt{ float: right; margin: 0 0 0 10px; padding: 0 0 0 20px; border-left: 1px solid #e8e8e8;}
+.user_info_standard_classic .panel_user_data dl b{ font-size: 22px; display: block; }
+.user_info_standard_classic .panel_user_data dl span{color: #9b9b9b;}
+
+
+.user_info_standard_panel .panel_user_data .drop_green b,
+.user_info_standard_panel .panel_user_data .drop_orange b,
+.user_info_standard_panel .panel_user_data .drop b,
+.user_info_standard_panel .panel_user_data .rise_green b,
+.user_info_standard_panel .panel_user_data .rise_orange b,
+.user_info_standard_panel .panel_user_data .rise b
+{ padding: 0 20px 0 0; }
+.user_info_standard_panel .panel_user_data .rise_orange b,
+.user_info_standard_panel .panel_user_data .rise b
+{ background: url(images/rise_orange.png) right center no-repeat;}
+.user_info_standard_panel .panel_user_data .rise_green b{background: url(images/rise_green.png) right center no-repeat;}
+.user_info_standard_panel .panel_user_data .drop_green b,
+.user_info_standard_panel .panel_user_data .drop b
+{ background: url(images/drop_green.png) right center no-repeat;}
+.user_info_standard_panel .panel_user_data .drop_orange b{background: url(images/drop_orange.png) right center no-repeat;}

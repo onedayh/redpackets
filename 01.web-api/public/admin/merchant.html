@@ -1,0 +1,144 @@
+﻿
+<div id="tabInfo" class="easyui-tabs" data-options="fit:true">
+    <div title="基本信息" style="padding: 10px;" data-options="fit:true">
+        <table class="form_table" style="padding-top: 10px;width:95%" data-options="fit:true">
+            <tr>
+                <th style="width:110px">企业图标 :
+                </th>
+                <td colspan="3">
+                    <imageUpload id="imgLogo" style="width:96px;height:96px" data-option="'key':'merchant', 'name':'logo'"></imageUpload>
+                    <!-- <img id="imgLogo" src=" ../images/pluspic_0.png" style="width:72px;height:72px;cursor: pointer;border: 1px solid #ccc;border-radius: 5px"/>
+                    <input type="hidden" name="logo" id="logo" /> -->
+                </td>
+            </tr>  
+            <tr>
+                <th style="width:110px">企业名称 :
+                </th>
+                <td colspan="3">
+                    <input class="easyui-textbox theme-textbox-radius" readonly="readonly" style="width:85%" name="name"  data-options="missingMessage:'请输入企业名称!',required:true,validType:'length[1,128]'" />
+                </td>
+            </tr>  
+            <tr>
+                <th>登录账号 :
+                </th>
+                <td>
+                    <input readonly="readonly" style="width:140px" class="easyui-textbox theme-textbox-radius" name="account"  />
+                </td>
+            </tr>
+            <tr>
+                <th>联系人 :</th>
+                <td>
+                    <input class="easyui-textbox theme-textbox-radius"  style="width:140px"  name="contacter" data-options="invalidMessage:'输入内容不能超过50个字符!',validType:'length[1,50]'" />
+                </td>               
+            </tr>
+            <tr>
+                <th>联系电话 :</th>
+                <td>
+                    <input class="easyui-textbox theme-textbox-radius"  style="width:140px"  name="mobile" data-options="invalidMessage:'输入内容不能超过50个字符!',validType:'length[1,50]'" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div title="应用配置" style="padding: 10px" data-options="fit:true">
+            <table class="form_table" style="padding-top: 10px;margin-left: 30px" align="center" data-options="fit:true">
+                <tr>
+                    <td/>
+                    <td style="color:#999" >以下内容为小程序开发配置,请正确设置参数</td>
+                </tr>
+                <tr>
+                    <th style="width:140px">小程序ID(AppId):</th>
+                    <td>
+                        <input class="easyui-textbox theme-textbox-radius" readonly="readonly" name="appid" style="width: 250px" id="appid"/></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>小程序密匙:</th>
+                    <td>
+                        <input class="easyui-textbox theme-textbox-radius"  name="securitykey" id="securitykey" style="width: 250px;" />
+    
+                    </td>
+                </tr>
+                <tr>
+                    <th>短信AppId:</th>
+                    <td>
+                        <input class="easyui-textbox theme-textbox-radius" name="smsappid" id="smsappid" style="width: 250px;"/></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>短信AppKey:</th>
+                    <td>
+                        <input class="easyui-textbox theme-textbox-radius" name="smsappkey" id="smsappkey" style="width: 250px;"/></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td/>
+                    <td style="color:#999" >以下内容为企业微信商户收款信息设置,请确认正确</td>
+                </tr>
+                <tr>
+                    <th>微信商户id:</th>
+                    <td>
+                        <input class="easyui-textbox theme-textbox-radius" name="wxmid"  id="wxmid" style="width: 250px;" /></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>微信商户密匙:</th>
+                    <td>
+                        <input class="easyui-textbox theme-textbox-radius" name="wxmkey" id="wxmkey" style="width: 250px;"/></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>微信商户证书:</th>
+                    <td>
+                        <input class="easyui-textbox theme-textbox-radius" name="wxmcert" id="wxmcert" style="width: 250px;"/></td>
+                    <td></td>
+                </tr>
+               
+                <!-- <tr>
+                    <th/>
+                    <td colspan="2">
+                        <a href="#" class="easyui-linkbutton button-blue fa-4x" onclick="updateSetting()" style="width:130px;height:36px"><i class="fa fa-check"></i>&nbsp;更新设置</a>
+                    </td>
+                </tr> -->
+            </table>
+        </div>
+    <div title="密码修改" style="padding: 30px" data-options="fit:true">
+        <table class="form_table" style="padding-top: 10px;margin-left: 30px" align="center" data-options="fit:true">
+            <tr>
+                <th style="width:140px" >旧密码:<font color='red'>*</font></th>
+                <td>
+                    <input class="easyui-passwordbox theme-textbox-radius" prompt="旧密码" iconWidth="28" style="width: 200px" id="oldpassword" name="oldpassword" data-options="validType:'length[1,20]'" /></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>新密码:<font color='red'>*</font></th>
+                <td>
+                    <input class="easyui-passwordbox theme-textbox-radius" prompt="新密码" iconWidth="28" name="newpassword" id="newpassword" style="width: 200px; height: 28px;" data-options="validType:'length[1,20]'" />
+
+                </td>
+            </tr>
+            <tr>
+                <th/>
+                <td colspan="2"><div class="alert-warning" style="line-height: 20px;">密码长度6~20,且必须包含字母和数字</div>  </td>
+            </tr>
+            <tr>
+                <th>密码确认:<font color='red'>*</font></th>
+                <td>
+                    <input class="easyui-passwordbox theme-textbox-radius" prompt="密码确认" iconWidth="28" id="passwordconfirm" name="passwordconfirm" style="width: 200px; height: 28px;" data-options="validType:'length[1,20]'" /></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th/>
+                <td colspan="2">
+                    <a href="#" class="easyui-linkbutton button-blue fa-4x" onclick="ChangePassword()" style="width:130px;height:36px"><i class="fa fa-check"></i>&nbsp;更新密码</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<%-contentFor('head_extension')%>
+<script type="text/javascript" src='/scripts/jquery.md5.js'></script>
+<script type="text/javascript" src="/admin/scripts/merchant.js"></script>
+ <!--以下三个是用于上传的-->
+ <script type="text/javascript" src='/scripts/jquery.ui.widget.js'></script>
+ <script type="text/javascript" src='/scripts/jquery.fileupload.js'></script>
+ <script type="text/javascript" src="/scripts/framework/framework_uploader.js"></script>

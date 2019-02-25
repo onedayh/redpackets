@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title><%= pagetitle%></title>
+    <!-- <link rel="stylesheet" type="text/css" href="/app_themes/green/easyui.css" /> -->
+    <link rel="stylesheet" type="text/css" href="/app_themes/insdep/easyui.css" />
+    <!-- <link href="/app_themes/insdep/easyui_animation.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="/app_themes/insdep/easyui_plus.css" rel="stylesheet" type="text/css"> -->
+    <link href="/app_themes/insdep/insdep_theme_default.css" rel="stylesheet" type="text/css">
+    <link href="/app_themes/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    <script type="text/javascript" src="/scripts/const.js"></script>
+    <script type="text/javascript" src="/scripts/urlconfig.js"></script>
+    <script type="text/javascript" src='/scripts/jquery-3.1.1.min.js'></script>
+    <script type="text/javascript" src='/scripts/jquery-easyui/jquery.easyui.min.js'></script>
+    <script type="text/javascript" src='/scripts/jquery-easyui/locale/easyui-lang-zh_cn.js'></script>
+    <script type="text/javascript" src="/app_themes/insdep/jquery.insdep-extend.min.js"></script>
+
+    <script type="text/javascript" src="/scripts/framework/framework_mdipage.js"></script>
+    <script type="text/javascript" src="/scripts/framework/framework_apicaller.js"></script>
+    <script type="text/javascript" src="/scripts/framework/framework_common.js"></script>
+    <script type="text/javascript" src="/scripts/framework/framework_extension.js"></script>
+    <script type="text/javascript" src="/scripts/framework/framework_baseform.js"></script>
+    <script type="text/javascript" src="/scripts/framework/framework_dialoghelper.js"></script>
+    <script type="text/javascript" src="/scripts/framework/framework_formhelper.js"></script>
+    <script type="text/javascript" src="/scripts/framework/framework_listform.js"></script>
+    <link rel="stylesheet" type="text/css" href="/app_themes/icon.css" />
+   <style>
+   /* .datagrid-header-row td{background-color:#748290;color:#fff} */
+    .datagrid-body td{
+            border-right:1px solid transparent;
+            border-bottom:1px solid #eee;
+        }
+        /* .main {border: none !important;padding-top: 20px} */
+    /* .main .panel-body {
+        border: none !important;
+        background-color: #fff;
+    } */
+   </style>
+    <%-defineContent('head_extension')%>
+</head>
+<body style="margin-right: -15px; margin-bottom: -15px;">
+    <div id="main-layout" class="easyui-layout" style="height: 500px;border: none">
+       <%-body%>
+    </div>  
+</body>

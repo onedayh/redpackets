@@ -1,0 +1,59 @@
+﻿{
+  "appsetting": {
+    "crypto":"md5",
+    "TokenCryptKey":"DOOMISOFT.COM",
+    "security":"false",
+    "fileDestination":"tencentcos",
+    "viewMapping":["backoffice"],
+    "company":"哆咪科技"
+  },
+  "startupRouter":[
+    {"file":"../routes/login.js","path":"/","disabled":false},
+    {"file":"../routes/fileupload.js","path":"/","disabled":false},
+    {"file":"../routes/wechat.js","path":"/","disabled":true}
+  ],
+  "connections":{
+    "dev":{"host": "127.0.0.1","user": "root","password": "pass@word1","database": "redbag",
+        "charset":"UTF8MB4_GENERAL_CI",
+        "waitForConnections": false,
+        "connectionLimit": 10,
+        "dateStrings":true,
+        "multipleStatements": true}
+  },
+  "socket":{
+    "ssl": false,
+    "port": 11010,
+    "ssl_key": "ssl.key",
+    "ssl_cert": "ssl.crt"
+  },
+  "writeFileFolder":{
+    "excel":"./public/excel"
+  },
+  "redisSession":false,
+  "redisConnections": {
+    "host": "172.16.0.7",
+    "port": 6379,
+    "db":13,
+    "auth_pass": "crs-ey4lnl8g:pass@word1"
+  },
+  "aliYunOSS":{
+    "region": "oss-cn-shenzhen",
+    "accessKeyId": "LTAIBIySKafuaaYh",
+    "accessKeySecret": "4LgWJemVuiscrs7UOp2oxoXUqX9ERu",
+    "bucket": "litecoder"
+  },
+  "tencentApi":{
+    "AppId":"1257410363",
+    "AppKey":"c96cd8ada4eaf5020437ddff10ea265b",
+    "SecretId":"AKIDxkJdityb5MPDn7hzYrvkJceRyFGAtJkw",
+    "SecretKey":"5wXtzrUrxoRpytZ3IHzRdZFengJlzyhA"
+  },
+  "tencentCOS":{
+    "AppId":"1257410363",
+    "SecretId": "AKIDxkJdityb5MPDn7hzYrvkJceRyFGAtJkw",
+    "SecretKey": "5wXtzrUrxoRpytZ3IHzRdZFengJlzyhA",
+    "bucket": "storage-1257410363",
+    "region": "ap-guangzhou"
+  },
+  "cacheHandler":"rediscache.js"
+}

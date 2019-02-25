@@ -1,0 +1,37 @@
+﻿
+<input type="hidden" id="pid" name="parent" />
+<table class="form_table" style="padding-top: 30px;width:90%" data-options="fit:true">
+    <tr>
+        <th style="width:140px">标签名称:</th>
+        <td>
+            <input class="easyui-textbox theme-textbox-radius"  style="width: 200px" name="label" data-options="missingMessage:'请输入标签名称',required:true,validType:'length[1,50]'" />
+        </td>
+    </tr>
+    <tr>
+        <th>排序索引:</th>
+        <td>
+            <input class="easyui-numberbox theme-textbox-radius"   style="width: 80px"  name="index" data-options="min:0,max:100000" />
+        </td>
+    </tr>
+</table>
+
+<%-contentFor('head_extension')%>
+<script>
+        var detailForm;
+        $(document).ready(function () {
+            detailForm = new detailForm('form', {
+                initForm:function(){
+                    if (!$.isNullOrEmpty($.getUrlParam('pid')))
+                     $('#pid').val($.getUrlParam('pid'));
+                },
+                bindOption: { url: '/label' },
+                saveOption: {
+                    button: '#lnkSave', url:'/label',
+                    successFunc: function (result) {
+                        dialogHelper.closeModal(result);
+                    }
+                }
+            });
+            detailForm.bindForm();
+        });
+</script>

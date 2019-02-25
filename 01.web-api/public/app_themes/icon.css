@@ -1,0 +1,240 @@
+/* .icon-add {
+    background: url('icons/edit_add.png') no-repeat center center;
+} */
+
+.icon-add:before{
+    content: "\f055";
+   }
+
+.icon-edit {
+    background: url('icons/pencil.png') no-repeat center center;
+}
+
+.icon-remove {
+    background: url('icons/edit_remove.png') no-repeat center center;
+}
+
+.icon-save {
+    background: url('icons/filesave.png') no-repeat center center;
+}
+
+.icon-ok {
+    background: url('icons/ok.png') no-repeat center center;
+}
+
+.icon-no {
+    background: url('icons/no.png') no-repeat center center;
+}
+
+.icon-cancel {
+    background: url('icons/cancel.png') no-repeat center center;
+}
+
+.icon-search {
+    background: url('icons/search.png') no-repeat center center;
+}
+.icon-folder {
+    background: url('icons/folder.png') no-repeat center center;
+}
+
+.icon-folderClose {
+    background: url('icons/folder-Closed.png') no-repeat center center;
+}
+.icon-reload {
+    background: url('icons/reload.png') no-repeat center center;
+}
+
+.icon-folderCloseSmall {
+    background: url('icons/folder-Closed-Small.png') no-repeat center center;
+}
+
+.icon-OfficeExcel {
+    background: url('icons/Office-Excel.png') no-repeat center center;
+}
+
+.icon-uploadfile {
+    background: url('icons/upload.png') no-repeat center center;
+}
+.icon-email {
+    background: url('icons/email.png') no-repeat center center;
+}
+.icon-delete {
+    background: url('icons/delete.png') no-repeat center center;
+}
+.icon-download {
+    background: url('icons/download.png') no-repeat center center;
+}
+
+.icon-audit {
+    background: url('icons/audit.png') no-repeat center center;
+}
+
+.icon-checked {
+    background: url('icons/checked.png') no-repeat center center;
+}
+
+
+.icon-settings {
+    background: url('icons/settings.png') no-repeat center center;
+}
+.icon-choose {
+    background: url('icons/choose.png') no-repeat center center;
+}
+
+.icon-user {
+    background: url('icons/user.png') no-repeat center center;
+}
+
+.icon-role {
+    background: url('icons/user_group.png') no-repeat center center;
+}
+
+.icon-chart {
+    background: url('icons/chart.png') no-repeat center center;
+}
+
+.icon-stop {
+    background: url('icons/stop.png') no-repeat center center;
+}
+
+.icon-start {
+    background: url('icons/start.png') no-repeat center center;
+}
+
+.icon-reset {
+    background: url('icons/resetpsd.png') no-repeat center center;
+}
+
+.icon-about {
+    background: url('icons/about.png') no-repeat center center;
+}
+
+.icon-import {
+    background: url('icons/import.png') no-repeat center center;
+}
+
+
+.icon-orgnization {
+    background: url('icons/orgnization.png') no-repeat center center;
+}
+.icon-advertisement {
+    background: url('icons/kblogger.png') no-repeat center center;
+}
+
+.icon-stop1 {
+    background: url('icons/stop1.png') no-repeat center center;
+}
+
+.icon-sms {
+    background: url('icons/sms.png') no-repeat center center;
+}
+
+.icon-money {
+    background: url('icons/money.png') no-repeat center center;
+}
+
+.icon-organization {
+    background: url('icons/organization.png') no-repeat center center;
+}
+.icon-logistics {
+    background: url('icons/logistics.png') no-repeat center center;
+}
+
+.icon-stars {
+    background: url('icons/stars.gif') no-repeat center center;
+}
+
+.icon-article {
+    background: url('icons/article.png') no-repeat center center;
+}
+
+.icon-gotop {
+    background: url('icons/gotop.png') no-repeat center center;
+}
+
+.icon-godown {
+    background: url('icons/godown.png') no-repeat center center;
+}
+
+.icon-disabled {
+    background: url('icons/disabled.png') no-repeat center center;
+}
+
+.icon-enable {
+    background: url('icons/enable.png') no-repeat center center;
+}
+
+
+.icon-ticket {
+    background: url('icons/ticket.png') no-repeat center center;
+}
+.icon-channel {
+    background: url('icons/partner.png') no-repeat center center;
+}
+.icon-onsale {
+    background: url('icons/onsales.png') no-repeat center center;
+}
+.icon-offsale {
+    background: url('icons/offsales.png') no-repeat center center;
+}
+.icon-process {
+    background: url('icons/process.png') no-repeat center center;
+}
+.icon-field {
+    background: url('icons/field.png') no-repeat center center;
+}
+.icon-moveup {
+    background: url('icons/moveup.png') no-repeat center center;
+}
+.icon-movedown {
+    background: url('icons/movedown.png') no-repeat center center;
+}
+.icon-tab {
+    background: url('icons/tab.png') no-repeat center center;
+}
+.icon-slider {
+    background: url('icons/slider.png') no-repeat center center;
+}
+.icon-product {
+    background: url('icons/product.png') no-repeat center center;
+}
+.icon-image {
+    background: url('icons/image.png') no-repeat center center;
+}
+.icon-html {
+    background: url('icons/html.png') no-repeat center center;
+}
+.icon-video {
+    background: url('icons/video.png') no-repeat center center;
+}
+.icon-xcx {
+    background: url('icons/xiaocx.png') no-repeat center center;
+}
+
+.icon-item {
+    background: url('icons/item.png') no-repeat center center;
+}
+.icon-catalog {
+    background: url('icons/catalog.png') no-repeat center center;
+}
+.icon-tea-product {
+    background: url('icons/tealeaf.png') no-repeat center center;
+}
+.icon-brand {
+    background: url('icons/brand.png') no-repeat center center;
+}
+.icon-serial {
+    background: url('icons/serial.png') no-repeat center center;
+}
+.icon-json {
+    background: url('icons/json.png') no-repeat center center;
+}
+.icon-text{
+    background: url('icons/text.png') no-repeat center center;
+}
+.icon-notification{
+    background: url('icons/notification.png') no-repeat center center;
+}
+.icon-wechat{
+    background: url('icons/wechat.png') no-repeat center center;
+}

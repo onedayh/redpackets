@@ -1,0 +1,16 @@
+<nav-bar title="我的" bgColor="transparent" theme="light"/>
+<view wx:if="{{isLoad}}">
+    <view class="top">
+        <image class="head" src="{{info.logo || '../../images/default_head.png'}}"></image>
+        <view wx:if="{{info.logo}}" class="name one-line">{{info.name}}</view>
+        <button wx:else class="flex-mid auth-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">点击授权</button>
+    </view>
+    <view class="bot">
+        <view class="item {{item.margin ? 'margin' : ''}}" wx:for="{{opts}}" wx:key="index" id="{{item.path}}" bindtap="go">
+            <image class="icon" src="../../images/{{item.icon}}.png"></image>
+            <view class="type">{{item.name}}</view>
+            <view class="value font-red"><text class="rmb" wx:if="{{item.path === 'wallet'}}">￥</text>{{item.value}}</view>
+        </view>
+    </view>
+    <view class="contact font-grey">更多个性化的需求,请<button open-type="contact" class="server">联系芝麻客服</button></view>
+</view>

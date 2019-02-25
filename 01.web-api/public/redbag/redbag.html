@@ -1,0 +1,376 @@
+﻿<table class="form_table" style="padding-top:30px;padding-bottom: 30px; width:90%" data-options="fit:true">
+    <tr>
+        <th style="width:140px">红包主题 :</th>
+        <td colspan="3">
+            <input class="easyui-textbox theme-textbox-radius"  style="width:80%" name="topic" data-options="prompt:'红包主题',missingMessage:'请输入红包主题',required:true,validType:'length[1,50]'" />
+        </td>
+    </tr>
+    <tr>
+        <th style="width:140px">祝福贺词 :</th>
+        <td colspan="3">
+            <input class="easyui-textbox theme-textbox-radius"  style="width:80%;height:50px" name="bless" data-options="multiline:true,prompt:'大吉大利,恭喜发财',validType:'length[1,50]'" />
+        </td>
+    </tr>
+    <tr>
+        <th>红包主 : </th>
+        <td>
+            <input placeholder="红包用户"  class="easyui-textbox theme-textbox-radius" 
+                name="username"  id="username" 
+                data-options="iconWidth: 22,
+                icons: [{
+                        iconCls:'icon-user',
+                        handler:function(e){
+                            formHelper.popupUserSelector(false,null,userSelected);
+                        }
+                    }
+                ]" />
+                <input type="hidden" id="userid" name="userid" />
+        </td>
+    </tr>
+    <tr>
+        <th>形象图标 : </th>
+        <td colspan="3" style="color: #999">
+            形象图标用于展示活动代表方,默认红包用户头像,也可用企业Logo&nbsp;&nbsp;
+        </td>
+    </tr>
+    <tr>
+        <th> </th>
+        <td colspan="3">
+            <imageUpload id="logoimage" style="width:40px;height:40px" data-option="'key':'redbagimage', 'name':'logo'"></imageUpload>
+        </td>
+    </tr>
+    <tr>
+        <th>红包金额 :</th>
+        <td >
+            <input class="easyui-numberbox theme-textbox-radius" id="amount" name="amount" data-options="missingMessage:'请输入红包金额',required:true,min:1,max:999999,precision:0" /> &nbsp;&nbsp;元
+            <span class="noedit"><i class="fa fa-lock"></i>&nbsp;&nbsp;&nbsp; 锁定,不可编辑</span>
+        </td>
+    </tr>
+    <tr>
+        <th>红包数量 :</th>
+        <td >
+            <input class="easyui-numberbox theme-textbox-radius"  id="total" name="total" data-options="missingMessage:'请输入红包数量',required:true,min:0,max:99999,precision:0" /> &nbsp;&nbsp;个
+            <span class="noedit"><i class="fa fa-lock"></i>&nbsp;&nbsp;&nbsp; 锁定,不可编辑</span>
+        </td>
+    </tr>
+    <tr>
+        <th>红包类型 :</th>
+        <td colspan="3">
+            <input type="radio" class="active" name="alloctype" id="randAlloc" value="0" checked onclick="switchAlloc(true)">
+            <label for="randAlloc" style="cursor: pointer">拼手气（随机）</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" class="active" name="alloctype" id="AvageAlloc"  value="1" onclick="switchAlloc(false)">
+            <label for="AvageAlloc"style="cursor: pointer">普通红包（平均分配）</label>
+            <span class="noedit"><i class="fa fa-lock"></i>&nbsp;&nbsp;&nbsp; 锁定,不可编辑</span>
+        </td>
+    </tr>
+    <tr class="alloc">
+        <th></th>
+        <td colspan="3"><span style="color:#999">系统根据设置的最低和最高金额随机分配红包,如不设置则最高金额,最低金额为1分钱<br/>如设置了最低或最高金额,可能导致最终生成的总金额和红包数量与设置的不一致,请慎用</span></td>
+    </tr>
+    <tr class="alloc">
+        <th>随机范围 :</th>
+        <td colspan="3">
+            <span style="color:#139824"> 最低 </span>&nbsp;&nbsp;<input class="easyui-numberbox theme-textbox-radius" id="minimal" style="width:60px" name="minimal" data-options="min:0.01,max:9999.99,precision:2" /> &nbsp;&nbsp;元
+            &nbsp;&nbsp;
+            ~ &nbsp;&nbsp;<span style="color:#db2828"> 最高</span> &nbsp;&nbsp;<input class="easyui-numberbox theme-textbox-radius" id="maximum" style="width:60px" name="maximum" data-options="min:0.01,max:9999.99,precision:2" /> &nbsp;&nbsp;元
+            
+            <span class="noedit"><i class="fa fa-lock"></i>&nbsp;&nbsp;&nbsp; 锁定,不可编辑</span>
+        </td>
+    </tr>
+    <tr style="height: 50px">
+        <th>领取方式 :</th>
+        <td colspan="3">
+            <input type="radio" class="active" name="playtype" id="type0" value="0" onclick="groupGrab(0)" checked>
+            <label for="type0" style="cursor: pointer">直接拆</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" class="active" name="playtype" id="type1" onclick="groupGrab(1)" value="1">
+            <label for="type1"style="cursor: pointer">裂变红包</label>
+            <div style="display: inline; padding-left: 20px" id="playMode">
+                    邀请&nbsp;&nbsp;&nbsp;&nbsp;<input class="easyui-numberbox theme-textbox-radius" style="width: 40px" name="groupcount" data-options="missingMessage:'请输入邀请的人数',min:2,max:5,precision:0" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;人一起开红包
+            </div>
+            <span class="noedit"><i class="fa fa-lock"></i>&nbsp;&nbsp;&nbsp; 锁定,不可编辑</span>
+        </td>
+    </tr>
+    <tr>
+        <th>红包背景 :</th>
+        <td colspan="3" style="color: #999">
+            红包展示的背景图效果,请上传高宽比例 4:3 的全屏图&nbsp;&nbsp;
+            <a href="#" onclick="defineLayout()" class="easyui-linkbutton button-green fa-4x" style="width:110px;height:30px;margin-right: 20px"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;布局定义</a>
+            &nbsp;&nbsp;
+            <a href="#" onclick="defineLayout('poster')" class="easyui-linkbutton button-green fa-4x" style="width:110px;height:30px;margin-right: 20px"><i class="fa fa-qrcode"></i>&nbsp;&nbsp;海报定义</a>
+            <input type="hidden" name="layout" id="layout">
+            <input type="hidden" name="poster" id="poster">
+        </td>
+    </tr>
+    
+    <tr>
+        <th></th>
+        <td colspan="3">
+            <imageUpload id="bgimage" style="width:120px;height:160px" data-option="'key':'redbagimage', 'name':'bgimage'"></imageUpload>
+            <br/><br/><a href="#" onclick="chooseTemplate()" class="easyui-linkbutton button-green fa-4x" style="width:120px;height:30px;margin-right: 20px"><i class="fa fa-file-image-o"></i>&nbsp;&nbsp;背景模板</a>    
+        </td>
+    </tr>
+    
+    <tr>
+        <th>背景音乐 :</th>
+        <td colspan="3" style="color: #999">红包主画面播放的背景音乐,请上传mp3文件</td>
+    </tr>
+    <tr>
+        <th></th>
+        <td colspan="3">
+             <imageUpload id="bgmusic" style="width:160px;height:40px" data-option="'type':'audio','key':'redbagmusic', 'name':'bgmusic'"></imageUpload>&nbsp;&nbsp;&nbsp;&nbsp; 
+             <a href="#" onclick="chooseMusic()" class="easyui-linkbutton button-green fa-4x" style="width:120px;height:30px;margin-right: 20px"><i class="fa fa-music"></i>&nbsp;&nbsp;主题音乐</a> 
+        </td>
+    </tr>
+    <tr>
+        <th>活动时间 :</th>
+            <td colspan="3" style="color: #999">活动时间范围内,参与者可领取</td>
+    </tr>
+    <tr>
+        <th></th>
+        <td colspan="3">
+            <input class="easyui-datetimebox theme-textbox-radius"  style="width:160px" data-options="showSeconds:false" name="startdate" />
+            &nbsp;&nbsp;至 &nbsp;&nbsp;
+            <input class="easyui-datetimebox theme-textbox-radius"  style="width:160px" data-options="showSeconds:false" name="enddate" />
+        </td>
+    </tr>
+    <tr>
+        <th>关注公众号</th>
+        <td colspan="3" style="color: #999">
+            <input type="checkbox" id="chkfollow" onchange="followChange()"> 
+            <label for="chkfollow"style="cursor: pointer">强制用户需关注指定公众号后,才可领取红包</label>
+            <input type="hidden" name="follow" id="hidfollow">
+        </td>
+    </tr>
+    <tr>
+        <th>公众号 :</th>
+        <td >
+            <!-- <input class="easyui-textbox theme-textbox-radius" style="width:80%" id="appid" name="appid" /> -->
+            <input placeholder="关注公众号"  style="width:80%" class="easyui-textbox theme-textbox-radius" 
+                name="appname"  id="appname" 
+                data-options="iconWidth: 26,
+                icons: [{
+                        iconCls:'icon-wechat',
+                        handler:function(e){
+                            formHelper.popupSelect({
+                                title:'请选择公众号',
+                                type:'list',
+                                datakey:'wechatpublic',
+                                width:650,
+                                height:600,
+                                afterSelectFunc:wechatSelected
+                            });
+                        }
+                    }
+                ]" />
+                <input type="hidden" style="width:80%" id="appid" name="appid" />
+                
+        </td>
+       
+    </tr>
+    <tr>
+        <th>广场发布 :</th>
+        <td colspan="3">
+            <input class="easyui-switchbutton" id="swpublic" data-options="onText:'公开',offText:'私密',value:'off',onChange:switchPubic"/>
+            <span style="color: #999;margin-left: 20px">公开至广场,玩家可在小红包广场进入领取红包</span>
+            <input type="hidden" name="public" id="hidpublic">
+        </td>
+    </tr>
+    <tr>
+        <th>允许分享 :</th>
+        <td colspan="3">
+            <input class="easyui-switchbutton" id="swshare" data-options="onText:'允许',offText:'禁止',value:'off',onChange:switchShare"/>
+            <span style="color: #999;margin-left: 20px">设置是否允许用户在小程序中分享当前红包链接</span>
+            <input type="hidden" name="share" id="hidShare">
+        </td>
+    </tr>
+    <tr class="shareimage">
+        <th>分享图片 :</th>
+        <td colspan="3" style="color: #999">
+            活动分享图片,请上传宽高比例 5:4 的图片 (默认截取当前屏幕)
+        </td>
+    </tr>
+    <tr class="shareimage">
+        <th>分享图片 :</th>
+        <td colspan="3">
+            <imageUpload id="shareimage" style="width:100px;height:80px" data-option="'key':'redbagimage', 'name':'shareimage'"></imageUpload>
+        </td>
+    </tr>
+</table>
+<%-contentFor('toolbarbutton')%>
+<a href="#" onclick="activeRedbag()" class="easyui-linkbutton button-red fa-4x" style="width:110px;height:30px;margin-right: 20px" id="lnkActive"><i class="fa fa-cny"></i>&nbsp;&nbsp;支付激活</a>
+<%-contentFor('head_extension')%>
+ <!--以下三个是用于上传的-->
+ <style>
+     .noedit {color:#db2828;padding-left: 10px}
+ </style>
+ <script type="text/javascript" src='/scripts/jquery.ui.widget.js'></script>
+ <script type="text/javascript" src='/scripts/jquery.fileupload.js'></script>
+ <script type="text/javascript" src="/scripts/framework/framework_uploader.js"></script>
+ <script>
+    var detailForm;
+    $(document).ready(function () {
+        detailForm = new detailForm('form', {
+            initForm:function(option){
+                groupGrab(0);
+                switchShare(0);
+                switchAlloc(true);
+                $('#lnkActive').hide();
+                $('.noedit').hide();
+                $("#total").attr("disabled","disabled");
+            },
+            bindOption:{
+                url: urlConfig.apiUrl.redbags.base, 
+                successFunc: function (result) {
+                    setContentEditAble(result.status);
+                    groupGrab(result.playtype);
+                    switchAlloc(result.alloctype==0);
+                    $('#bgimage')[0].setImage(result.bgimage);
+                    $('#shareimage')[0].setImage(result.shareimage);
+                    $('#logoimage')[0].setImage(result.logo);
+                    $('#bgmusic')[0].setImage(result.bgmusic);
+                    $('#swpublic').switchbutton(result.public==1?'check':'uncheck');
+                    $('#swshare').switchbutton(result.share==1?'check':'uncheck');
+                    switchShare(result.share==1);
+                    if (result.follow==1){
+                        $("#chkfollow").attr("checked", true);
+                    }
+                }
+            },
+            saveOption: {
+                button: '#lnkSave', url:urlConfig.apiUrl.redbags.base,
+                beforeFunc:function(option){
+                    var count = $('#total').numberbox('getValue');
+                    var money = $('#amount').numberbox('getValue');
+                    if ((money*100 / count)<1)
+                    {
+                        $.messager.alert('提示','红包金额过小或红包数量过大，分配后红包金额平均小于1分','error');
+                        return false;
+                    }
+                    if($('#userid').val()==''){
+                        $.messager.alert('提示','请指定红包用户','error');
+                        return false;
+                    }
+                    return true;
+                },
+                successFunc: function (result) {
+                    if (detailForm.getCurrentAction() == 'addnew') {
+                        dialogHelper.callParentFunc('reload');
+                        $.redirect('/redbag/redbag?actionType=edit&key=' + result.redid + '&random=' + Math.random());
+                    }
+                    else {
+                        dialogHelper.closeModal(result);
+                    }
+                }
+            }
+        });
+        detailForm.bindForm();
+    });
+
+    function chooseMusic(){
+        formHelper.popupSelect({title:'主题音乐',datakey:'music',width:650,height:600,
+        afterSelectFunc:function(musicData){
+            if (musicData){
+                $('#bgmusic')[0].setImage(musicData.file);
+            }
+               
+        }})
+    }
+
+    function setContentEditAble(status){
+        $('#amount,#total,#minimal,#maximum').textbox({editable:status==0});
+        if (status!=0)
+            $('.active').attr('disabled','disabled');
+        else
+            $('.active').removeAttr('disabled');
+        if (status!=0) {
+            $('.noedit').show();
+            $('#lnkActive').hide();
+        }
+        else{
+            $('#lnkActive').show();
+            $('.noedit').hide();
+        }
+    }
+    
+    function switchAlloc(rnd){
+        if (rnd===true)
+            $('.alloc').show();
+        else
+            $('.alloc').hide();
+    }
+    function followChange(value){
+        var checked = $("#chkfollow").prop("checked");
+        $('#hidfollow').val(checked?1:0);
+    }
+
+    function switchPubic(checked){
+        $('#hidpublic').val(checked==true?1:0);
+        
+
+    }
+
+    function switchShare(checked){
+        $('#hidShare').val(checked==true?1:0);
+        if (checked==true)
+            $('.shareimage').fadeIn();
+        else
+            $('.shareimage').fadeOut();
+    }
+
+    function groupGrab(playMode){
+        if (playMode==1)
+            $('#playMode').fadeIn();
+        else
+        $('#playMode').fadeOut();
+    }
+
+    function userSelected(data){
+        if (data){
+            $('#userid').val(data.id);
+            $('#username').textbox('setValue',data.name);
+            if ($.isNullOrEmpty($('#logoimage')[0].getImage())) $('#logoimage')[0].setImage(data.imageurl);
+        }
+    }
+    function wechatSelected(data){
+        if (data){
+            $('#appid').val(data.id);
+            $('#appname').textbox('setValue',data.name);
+        }
+    }
+    function activeRedbag(){
+        dialogHelper.showModal({url:'/redbag/redbagpay?key='+detailForm.getCurrentKey()+'&actionType=edit',
+                            width:650,height:600,title:'红包支付',closeFunc:function(result){
+                                if (result && result.payed==1){
+                                    dialogHelper.callParentFunc('reload');
+                                    $.redirect('/redbag/redbag?actionType=edit&key=' + detailForm.getCurrentKey() + '&random=' + Math.random());
+                                }
+                            } });
+    }
+
+    function defineLayout(type){
+        type = type || 'layout';
+        dialogHelper.showModal({url:'/redbag/layoutblank?type='+type,
+                            width:500,height:450,title:'布局定义'});
+    }
+
+    function getDefine(type){
+        return $('#'+type).val();
+    }
+    function setDefine(param){
+        return $('#'+param.type).val(param.value);
+    }
+    function chooseTemplate(){
+        dialogHelper.showModal({url:'/redbag/bgmselectorblank',
+                            width:690,height:600,title:'背景模板',closeFunc:function(result){
+                                if (result){
+                                    $('#bgimage')[0].setImage(result.file);
+                                    $('#shareimage')[0].setImage(result.share);
+                                    $('#layout').val(JSON.stringify(result.layout));
+                                    $('#poster').val(JSON.stringify(result.poster));
+                                }
+                            } });
+    }
+</script>

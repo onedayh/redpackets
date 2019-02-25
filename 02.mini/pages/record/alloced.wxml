@@ -1,0 +1,30 @@
+<import src="../../templates/template.wxml"/>
+<wxs module="filters" src="../../filters/filter.wxs" />
+<nav-bar title="领取记录" showBack/>
+<view style="padding-top: {{pagePt}}px">
+    <view class="top bg-white flex-btw">
+        <image class="logo" src="{{logo}}"></image>
+        <view class="topic-wrap">
+            <view class="topic one-line">{{topic}}</view>
+            <view class="date">{{createdate}}</view>
+        </view>
+    </view>
+    <view class="total">已领取<text class="ge"> {{gottotal}}/{{total}} </text>个，共<text class="ge"> {{filters.toFix(gotamount)}}/{{filters.toFix(amount)}} </text>元</view>
+    <view class="list-wrap">
+        <view class="list-item flex-btw" wx:for="{{allocuser}}" wx:key="index">
+            <image class="list-logo" src="{{item.logo}}"></image>
+            <view class="awrap">
+                <view class="flex-btw">
+                    <view>{{item.username}}</view>
+                    <view class="font-bold">{{filters.toFix(item.money)}}</view>
+                </view>
+                <view class="bot flex-btw">
+                    <view>{{item.date}}</view>
+                    <view wx:if="{{item.isbest}}" class="best"><image class="icon-best" src="../../images/icon_best.png"></image>手气最佳</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <template is="feedback" data="{{feedback}}" wx:if="{{isLoad && allocuser.length > 0 && feedback}}" />
+    <template is="empty" data="{{...empty}}" wx:if="{{isLoad && allocuser.length === 0}}" />
+</view>

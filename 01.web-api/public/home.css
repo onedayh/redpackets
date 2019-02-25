@@ -1,0 +1,381 @@
+/* 公共样式 */
+
+body {
+  padding: 16px;
+  height: initial;
+  background: #eaedf1;
+}
+
+.main {
+  min-width: 600px;
+  max-width: 1300px;
+  color: #1a1a1a;
+}
+
+.row {
+  box-sizing: border-box;
+  margin: 16px 0;
+  font-size: 0;
+}
+
+.row:first-child {
+  margin-top: 0;
+}
+
+.row:last-child {
+  margin-bottom: 0;
+}
+
+.container {
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 16px;
+  vertical-align: middle;
+  font-size: 14px;
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+}
+
+.container-title {
+  margin-bottom: 10px;
+  height: 18px;
+  line-height: 18px;
+}
+
+.container .item {
+  box-sizing: border-box;
+  border: 1px solid #fff;
+  background: #F5F5F6;
+  transition: all 0.15s, 0.15s;
+}
+
+.container .item:hover {
+  border-color: #00c1de;
+  background: #fff;
+  /* box-shadow:0 0 20px rgba(0,198,226,.5); */
+}
+
+.container .item:first-child {
+  margin-left: 0;
+}
+
+.container .item .item-num {
+  color: #888888;
+}
+
+.container .item .item-text {
+  font-size: 12px;
+  color: #333;
+}
+
+.row1 .container {
+  height: 180px;
+}
+
+.row1 .container-body {
+  height: 120px;
+}
+
+.row2 .container-body {
+  height: 360px;
+}
+
+.row3 .container-body {
+  height: 120px;
+}
+
+/* 用户模块 */
+
+.user-container {
+  width: calc(65% - 8px);
+}
+
+.user-container .item {
+  float: left;
+  margin-left: 10px;
+  width: calc(19% - 7.5px);
+  height: 100%;
+  text-align: center;
+}
+
+.user-container .item .item-num {
+  margin-top: 20px;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  font-size: 20px;
+}
+
+.userheader {
+  border:1px solid #ccc;border-radius: 50%;width:32px;height:32px;margin-top: 10px;
+}
+
+/* 物流模块 */
+
+.logistics-container {
+  width: calc(35% - 8px);
+  margin-left: 16px;
+}
+
+.logistics-container .item {
+  margin-bottom: 10px;
+  padding-left: 10%;
+  height: 55px;
+  line-height: 55px;
+}
+
+.logistics-container .item:last-child {
+  margin-bottom: 0;
+}
+
+.logistics-container .item .item-text {
+  float: left;
+  width: 30%;
+  height: 100%;
+}
+
+.logistics-container .item .item-num {
+  float: left;
+  height: 100%;
+  font-size: 18px;
+}
+
+/* 用户模块 */
+
+.channel-container {
+  width: calc(100% - 2px);
+}
+
+.channel-container .item {
+  float: left;
+  margin-left: 10px;
+  width: calc(25% - 7.5px);
+  height: 100%;
+  text-align: center;
+}
+
+.channel-container .item .item-num {
+  margin-top: 20px;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  font-size: 32px;
+}
+
+/* 物流模块 */
+
+.earnings-container {
+  width: calc(35% - 8px);
+  margin-left: 16px;
+}
+
+.earnings-container .item {
+  margin-bottom: 10px;
+  padding-left: 20%;
+  height: 55px;
+  line-height: 55px;
+}
+
+.earnings-container .item:last-child {
+  margin-bottom: 0;
+}
+
+.earnings-container .item .item-text {
+  float: left;
+  width: 50%;
+  height: 100%;
+}
+
+.earnings-container .item .item-num {
+  float: left;
+  height: 100%;
+  font-size: 18px;
+}
+
+/* 订单模块 */
+
+.all-order-container {
+  width: calc(50% - 8px);
+  height: 238px;
+}
+
+.all-order-container .container-head {
+  padding: 0 5%;
+  font-size: 0;
+}
+
+.all-order-container .container-head-item {
+  display: inline-block;
+  margin-left: 10px;
+  width: calc(33.33% - 7.5px);
+  height: 50px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 22px;
+  /* color: rgb(198, 208, 212); */
+  color:#888888;
+}
+
+.all-order-container .container-head-item:first-child {
+  margin-left: 0;
+}
+
+.all-order-container .all-money::before {
+  content: "总 ";
+  font-size: 12px;
+}
+
+.all-order-container .all-money::after {
+  content: " 元";
+  font-size: 12px;
+}
+
+.all-order-container .all-count::before {
+  content: "总 ";
+  font-size: 12px;
+}
+
+.all-order-container .all-count::after {
+  content: " 单";
+  font-size: 12px;
+}
+
+.all-order-container .all-rebate::before {
+  content: "返 ";
+  font-size: 12px;
+}
+
+.all-order-container .all-rebate::after {
+  content: " 元";
+  font-size: 12px;
+}
+
+.all-order-container .item {
+  float: left;
+  margin-left: 10px;
+  width: calc(33.33% - 7.5px);
+  height: 100%;
+  text-align: center;
+}
+
+.all-order-container .item .item-count {
+  margin-top: 20px;
+  width: 100%;
+  font-size: 18px;
+  /* color: rgb(198, 208, 212); */
+  color:#888;
+}
+
+.all-order-container .item .item-count::after {
+  content: " 单";
+  font-size: 12px;
+}
+
+.all-order-container .item .item-money {
+  margin-top: 6px;
+  width: 100%;
+  font-size: 25px;
+  color: rgb(198, 208, 212);
+}
+
+.all-order-container .item .item-money::after {
+  content: " 元";
+  font-size: 12px;
+}
+
+.all-order-container .item .item-text {
+  margin-top: 8px;
+}
+
+/* 今日订单模块 */
+
+.today-order-container {
+  margin-left: 16px;
+  width: calc(50% - 8px);
+  height: 238px;
+}
+
+.today-order-container .container-head {
+  padding: 0 5%;
+  font-size: 0;
+}
+
+.today-order-container .container-head-item {
+  display: inline-block;
+  width: 33.33%;
+  height: 50px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 22px;
+  color: rgb(198, 208, 212);
+}
+
+.today-order-container .container-head-item:first-child {
+  margin-left: 0;
+}
+
+.today-order-container .all-money::before {
+  content: "总 ";
+  font-size: 12px;
+}
+
+.today-order-container .all-money::after {
+  content: " 元";
+  font-size: 12px;
+}
+
+.today-order-container .all-count::before {
+  content: "总 ";
+  font-size: 12px;
+}
+
+.today-order-container .all-count::after {
+  content: " 单";
+  font-size: 12px;
+}
+
+.today-order-container .all-rebate::before {
+  content: "返 ";
+  font-size: 12px;
+}
+
+.today-order-container .all-rebate::after {
+  content: " 元";
+  font-size: 12px;
+}
+
+.today-order-container .item {
+  float: left;
+  margin-left: 10px;
+  width: calc(33.33% - 7.5px);
+  height: 100%;
+  text-align: center;
+}
+
+.today-order-container .item .item-count {
+  margin-top: 20px;
+  width: 100%;
+  font-size: 18px;
+  color: rgb(198, 208, 212);
+}
+
+.today-order-container .item .item-count::after {
+  content: " 单";
+  font-size: 12px;
+}
+
+.today-order-container .item .item-money {
+  margin-top: 6px;
+  width: 100%;
+  font-size: 25px;
+  color: rgb(198, 208, 212);
+}
+
+.today-order-container .item .item-money::after {
+  content: " 元";
+  font-size: 12px;
+}
+
+.today-order-container .item .item-text {
+  margin-top: 8px;
+}

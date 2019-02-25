@@ -1,0 +1,10 @@
+<template name="empty">
+    <view class="empty" style="margin-top: {{mTop}}rpx">
+        <image class="empty-img" src="../../images/{{icon}}.png"></image>
+        <view class="empty-text">暂无{{msg}}</view>
+    </view>
+</template>
+
+<template name="feedback">
+    <view class="flex-mid feedback">{{feedback}}</view>
+</template>

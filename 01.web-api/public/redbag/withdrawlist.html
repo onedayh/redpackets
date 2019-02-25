@@ -1,0 +1,38 @@
+﻿<div class="main" id="bt_index_layout_center" data-options="region:'center',title:''">
+        <table id="dg"></table>
+        <div id="tools" style="width: 100%; ">
+            <div style="margin-bottom: 5px">
+                <table class="form_table">
+                    <tr>
+                        <th>用户:</th>
+                        <td>
+                             <input class="easyui-textbox  theme-textbox-radius" search-options="key:'name'" />
+                            </td>
+                        <th>状态:</th>
+                        <td>
+                            <select search-options="key:'transfer'" class="easyui-combobox theme-textbox-radius" data-options="editable:false,panelHeight: 'auto'"  style="width:110px">
+                                    <option value="" selected>全部</option>
+                                    <option value="1">提现成功</option>
+                                    <option value="100">提现失败</option>
+                            </select>    
+                        </td>
+                        <td>
+                                <a href="#" class="easyui-linkbutton button-blue fa-4x" style="width:90px;" id="btnSearch"><i class="fa fa-search"></i>&nbsp;查询</a>
+                                <a href="#" class="easyui-linkbutton" style="width:90px;" id="btnReset"><i class="fa fa-refresh"></i>&nbsp;重置</a>          
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+<%-contentFor('head_extension')%>
+<script type="text/javascript" src="./scripts/withdraw.js"></script>
+<style type="text/css">
+    .datagrid-footer{background-color: #1b8cf2;}
+    .datagrid-footer .datagrid-ftable{color: #fff}
+    .datagrid-group {height:25px;background:#e4f1f8}
+    .status0 {color:#c9302c}
+    .status1 {color:#1b8cf2}
+    .status100 {color:#888}
+</style>

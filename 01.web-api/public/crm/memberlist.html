@@ -1,0 +1,35 @@
+﻿<div class="main" id="bt_index_layout_center" data-options="region:'center',title:''">
+    <table id="dg"></table>
+    <div id="tools_1" style="">
+        <div style="margin-bottom: 5px">
+            <table class="form_table">
+                <tr>
+                    <th>搜索内容:</th>
+                    <td>
+                        <input class="easyui-textbox  theme-textbox-radius" search-options="key:'name'" style="width: 160px;"/>
+                    </td>
+                    <td>
+                        <a href="#" class="easyui-linkbutton button-blue fa-4x" style="width:90px;" id="btnSearch"><i class="fa fa-search"></i>&nbsp;查询</a>
+                        <a href="#" class="easyui-linkbutton" style="width:90px;" id="btnReset"><i class="fa fa-refresh"></i>&nbsp;重置</a>                    
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<%- contentFor('head_extension') %>
+<script type="text/javascript" src="./scripts/memberlist.js"></script>
+<style type="text/css">
+    .main .datagrid-row {
+        height: 44px;
+    }
+    .main .datagrid-cell{
+        white-space:normal; 
+    }
+    .main .datagrid-cell img {
+        max-height: inherit;
+    }
+    .main .datagrid-cell-c2-logo {
+        position: relative;
+    }
+</style>

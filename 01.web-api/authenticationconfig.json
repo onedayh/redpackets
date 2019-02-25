@@ -1,0 +1,11 @@
+﻿[
+  {
+    "name": "backoffice",
+    "provider": "../../provider/authoricateProvider.js",
+    "default":true
+  },
+  {
+    "name": "api",
+    "provider": "../../provider/apiAuthoricateProvider.js"
+  }
+]

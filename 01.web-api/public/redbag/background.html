@@ -1,0 +1,101 @@
+﻿<table class="form_table" style="padding-top:30px;padding-bottom: 30px; width:90%" data-options="fit:true">
+    <tr>
+        <th style="width:140px">主题 :</th>
+        <td colspan="3">
+            <input class="easyui-textbox theme-textbox-radius"  style="width:80%" name="title" data-options="prompt:'红包主题',missingMessage:'请输入红包主题',required:true,validType:'length[1,50]'" />
+        </td>
+    </tr>
+    <tr>
+        <th>背景大图 :</th>
+        <td colspan="3" style="color: #999">红包展示的背景图效果,请上传高宽比例 4:3 的全屏图</td>
+    </tr>
+    <tr>
+        <th></th>
+        <td colspan="3">
+            <imageUpload id="imgBG" style="width:90px;height:120px" data-option="'key':'redbagimage',name:'file'"></imageUpload>
+        </td>
+    </tr>
+    <tr>
+        <th>分享图 :</th>
+        <td colspan="3" style="color: #999">应用分享图片,请上传宽高比例 5:4 的图片</td>
+    </tr>
+    <tr>
+        <th></th>
+        <td colspan="3">
+            <imageUpload id="imgshare" style="width:100px;height:80px" data-option="'key':'redbagimage',name:'share'"></imageUpload>
+        </td>
+    </tr>
+    <tr>
+        <th>布局定义 :</th>
+        <td colspan="3">
+            <input type="hidden" name="layout" id="layout" />
+            <a href="#" onclick="defineLayout()" class="easyui-linkbutton button-green fa-4x" style="width:110px;height:30px;margin-right: 20px"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;布局定义</a>
+        </td>
+    </tr>
+    <tr>
+        <th>海报定义 :</th>
+        <td colspan="3">
+            <input type="hidden" name="poster" id="poster" />
+            <a href="#" onclick="defineLayout('poster')" class="easyui-linkbutton button-green fa-4x" style="width:110px;height:30px;margin-right: 20px"><i class="fa fa-qrcode"></i>&nbsp;&nbsp;海报布局</a>
+        </td>
+    </tr>
+    <tr>
+        <th>显示次序 :</th>
+        <td >
+            <input class="easyui-numberbox theme-textbox-radius"   name="index" data-options="min:0,max:99999,precision:0" />
+            <span style="color: #999;margin-left: 20px">数字越大越靠前显示</span>
+        </td>
+    </tr>
+</table>
+
+<%-contentFor('head_extension')%>
+ <!--以下三个是用于上传的-->
+ <script type="text/javascript" src='/scripts/jquery.ui.widget.js'></script>
+ <script type="text/javascript" src='/scripts/jquery.fileupload.js'></script>
+ <script type="text/javascript" src="/scripts/framework/framework_uploader.js"></script>
+ <script>
+    var detailForm,currentType;
+    $(document).ready(function () {
+        detailForm = new detailForm('form', {
+            initForm:function(option){
+                switchType(0);
+            },
+            bindOption:{
+                url: urlConfig.apiUrl.background.base, 
+                successFunc: function (result) {
+                        $('#imgBG')[0].setImage(result.file);
+                        $('#imgshare')[0].setImage(result.share);
+
+                }
+            },
+            saveOption: {
+                button: '#lnkSave', url:urlConfig.apiUrl.background.base,
+                beforeFunc:function(option){
+                    if ($.isNullOrEmpty($('#imgBG')[0].getImage())){
+                        $.messager.alert('提示','请上传主题背景','info');
+                        return false;
+                    }
+                    return true;
+                },
+                successFunc: function (result) {
+                    dialogHelper.closeModal(result);
+                }
+            }
+        });
+        detailForm.bindForm();
+    });
+
+
+    function defineLayout(type){
+        type = type || 'layout';
+        dialogHelper.showModal({url:'/redbag/layoutblank?type='+type,
+                            width:500,height:450,title:'布局定义'});
+    }
+    
+    function getDefine(type){
+        return $('#'+type).val();
+    }
+    function setDefine(param){
+        return $('#'+param.type).val(param.value);
+    }
+</script>

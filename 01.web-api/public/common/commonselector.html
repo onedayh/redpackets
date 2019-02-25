@@ -1,0 +1,18 @@
+﻿<table id="dg"></table>
+<div id="tools_1" style="padding: 5px; text-align: right">
+    <div style="text-align: right; padding: 3px 30px 3px 40px;">
+        <a href="#" class="easyui-linkbutton button-blue fa-4x" style="width:100px;height:34px"  onclick="ConfirmSelected()"><i class="fa fa-check"></i>&nbsp; 确定</a>
+        <a href="#" class="easyui-linkbutton fa-4x"  style="width:100px;height:34px" onclick="dialogHelper.closeModal()"><i class="fa fa-sign-out"></i> &nbsp;取消</a>
+    </div>
+    <div id="searchBox" style="margin-bottom: 5px">
+        <div id="searchContent" style="float:left"></div>
+        <div id="searchSubmit" style="float:left;padding-right: 5px;display: none;margin-top:20px">
+                <a href="#" class="easyui-linkbutton  button-blue" style="width:80px" id="btnSearch"><i class="fa fa-search"></i>查询</a>
+                    <a href="#" style="display:none" id="btnReset" class="easyui-linkbutton" iconcls="icon-reload">重置</a>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+</div>
+<%- contentFor('head_extension') %>
+<script type="text/javascript" src="/common/js/selectsearchsetting.js"></script>
+<script type="text/javascript" src="/common/js/commonselect.js"></script>

@@ -1,0 +1,80 @@
+﻿<table class="form_table" style="padding-top:15px;width:90%" data-options="fit:true">
+    <tr>
+        <th style="width:120px">页面名称:</th>
+        <td colspan="3">
+            <input class="easyui-textbox theme-textbox-radius"  style="width:90%" name="name" data-options="prompt:'页面名称,如 首页',missingMessage:'请输入页面名称',required:true,validType:'length[1,50]'" />
+        </td>
+    </tr>
+    <tr>
+        <th style="width:120px">页面地址:</th>
+        <td colspan="3">
+            <input class="easyui-textbox theme-textbox-radius"  style="width:90%" name="route" data-options="prompt:'页面路由地址,如:page/index',missingMessage:'请输入页面地址',required:true,validType:'length[1,128]'" />
+        </td>
+    </tr>
+    <tr>
+        <th style="width:120px">分享状态:</th>
+        <td colspan="3">
+            <select  name="disabled" class="easyui-combobox theme-textbox-radius" data-options="editable:false,panelHeight: 'auto'" style="width: 100px;">
+                <option value="0" selected>允许分享</option>
+                <option value="1">禁止分享</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+    <th>分享图片:</th>
+        <td> 
+            <imageUpload id="imgShare" style="width:120px;height:96px" data-option="'key':'shareimage', 'name':'image'"></imageUpload>
+        </td>
+        <td colspan="2" style="color: #666">分享图片每张不能超过2M,图片长宽比例5:4</td>
+    </tr>
+    <tr>
+        <th>分享Url :</th>
+        <td colspan="3">
+            <input class="easyui-textbox theme-textbox-radius"   style="width: 90%"  name="url" data-options="prompt:'分享的页面地址,不填即分享当前页面',validType:'length[1,255]'" />
+        </td>
+    </tr>
+    <tr>
+        <th>分享标题 :</th>
+        <td colspan="3">
+            <input class="easyui-textbox theme-textbox-radius"   style="width: 90%"  name="title" data-options="missingMessage:'请输入字典项值',required:true,validType:'length[1,128]'" />
+        </td>
+    </tr>
+    <!-- <tr>
+        <th>分享文字 :</th>
+        <td colspan="3">
+            <input class="easyui-textbox theme-textbox-radius"   style="width: 90%;height:60px"  name="text" data-options="multiline:true,validType:'length[1,255]'" />
+        </td>
+    </tr> -->
+</table>
+
+<%-contentFor('head_extension')%>
+ <!--以下三个是用于上传的-->
+ <script type="text/javascript" src='/scripts/jquery.ui.widget.js'></script>
+ <script type="text/javascript" src='/scripts/jquery.fileupload.js'></script>
+ <script type="text/javascript" src="/scripts/framework/framework_uploader.js"></script>
+
+ <script type="text/javascript" src="/scripts/framework/framework_combobox.js"></script>
+<script>
+    var detailForm;
+    $(document).ready(function () {
+        // var  appCombo = new combobox('appCombo',{url:urlConfig.apiUrl.dictionaryitem.filterItem.format('dict_code=mini_app&decorate=false&sort=name')
+        //                                 ,valueField:'ext1',textField:'name',
+        //                                 editable:false,panelHeight:'auto',limitToList:true
+        // });
+        detailForm = new detailForm('form', {
+            bindOption: { url: urlConfig.apiUrl.share.base,successFunc: function (result) {
+                    $('#imgShare')[0].setImage(result.image);
+                } },
+            saveOption: {
+                button: '#lnkSave', url:urlConfig.apiUrl.share.base,
+                successFunc: function (result) {
+                    dialogHelper.closeModal(result);
+                },
+                failFunc:function (result) {
+                    $.messager.alert('错误','页面路由地址已存在','error');
+                }
+            }
+        });
+        detailForm.bindForm();
+    });
+</script>

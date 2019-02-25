@@ -1,0 +1,35 @@
+.nav-bar{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+.bar-title{
+    color: #fff;
+    font-size: 30rpx;
+}
+.dark{
+    color: #333;
+}
+.icon-wrap{
+    position: absolute;
+    padding: 0 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    bottom: 0;
+}
+.back_icon{
+    width: 36rpx;
+    height: 36rpx;
+}
+.index_icon{
+    width: 36rpx;
+    height: 36rpx;
+}

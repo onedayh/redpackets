@@ -1,0 +1,45 @@
+<wxs module="filters" src="../../filters/filter.wxs"/>
+<nav-bar title="芝麻广场"/>
+<view class="page" style="padding-top: {{pagePt}}px" wx:if="{{isLoad}}">
+    <swiper
+            class="swp"
+            current="{{current}}"
+            circular
+            previous-margin="70rpx"
+            next-margin="70rpx"
+            bindchange="handleChange"
+    >
+        <swiper-item class="swp-item" wx:for="{{list}}" wx:key="index">
+            <view class="item {{current === index ? '' : 'smaller'}}" data-id="{{item.id}}" data-index="{{index}}"
+                  catchtap="goActive">
+                <image mode="widthFix" class="bg" src="{{imageBaseUrl + item.image}}"></image>
+                <view class="content bg-white {{item.joined ? 'joined' : item.robbed ? 'robbed' : ''}}">
+                    <image class="logo"
+                           src="{{item.logo ? imageBaseUrl + item.logo : '../../images/default_head.png'}}"></image>
+                    <view class="topic two-line">{{item.topic}}</view>
+                    <view class="line"></view>
+                    <view wx:if="{{item.robbed==0}}" class="status font-red">{{item.startstatus === 0 ? '一大波包民正在涌入...' :
+                        item.startstatus === -1 ? '一大波红包准备发出' : item.startstatus === -2 ? '已结束' : ''}}
+                    </view>
+                    <view wx:if="{{item.robbed==1}}" class="status font-red">红包已被抢光了</view>
+                    <view wx:if="{{item.gotcount>0}}" class="font-grey num">
+                        已有{{item.gotcount}}人抢到了{{filters.toFix(item.gotamount)}}元红包
+                    </view>
+                    <view wx:if="{{item.gotcount<=0}}" class="font-grey num">还没有人抢到,去做第一个开包的!</view>
+                </view>
+            </view>
+        </swiper-item>
+    </swiper>
+</view>
+
+<image src="../../images/icon_music.png" class="music {{playMusic ? '' : 'music-pause'}}" wx:if="{{showMusic}}" bindtap="musicControl"></image>
+
+<auth wx:if="{{showAuthorizationWnd && isLoad}}" bind:change="changeAuth"></auth>
+
+<view class="doom-wrap" style="top: {{pagePt}}px">
+    <view wx:for="{{doomList}}" wx:key="id" class="doom-item flex-mid"
+          style="top: {{item.top}}rpx; animation: doom {{item.dur}}s {{item.timeFun}} forwards;">
+        <image class="doom-logo" src="{{item.userlogo}}"></image>
+        <view class="doom-text">{{item.username}}已抢到{{item.money}}元红包</view>
+    </view>
+</view>

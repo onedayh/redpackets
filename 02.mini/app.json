@@ -1,0 +1,63 @@
+{
+	"pages": [
+		"pages/demo/selectindex",
+		"pages/square/square",
+		"pages/create/create",
+		"pages/mine/mine",
+		"pages/index/index",
+		"pages/wallet/wallet",
+		"pages/record/record",
+		"pages/record/alloced",
+		"pages/demo/mock",
+		"pages/webview/webview",
+		"pages/canvas/canvas"
+	],
+	"window": {
+		"backgroundColor": "#f6f6f6",
+		"navigationStyle": "custom",
+		"navigationBarTextStyle": "black"
+	},
+	"tabBar": {
+		"color": "#aaa",
+		"selectedColor": "#bc1224",
+		"borderStyle": "white",
+		"backgroundColor": "#f9f9f9",
+		"list": [
+			{
+				"pagePath": "pages/square/square",
+				"text": "广场",
+				"iconPath": "images/square.png",
+				"selectedIconPath": "images/square_selected.png"
+			},
+			{
+				"pagePath": "pages/create/create",
+				"text": "发红包",
+				"iconPath": "images/create.png",
+				"selectedIconPath": "images/create.png"
+			},
+			{
+				"pagePath": "pages/mine/mine",
+				"text": "我的",
+				"iconPath": "images/mine.png",
+				"selectedIconPath": "images/mine_selected.png"
+			}
+		]
+	},
+	"usingComponents": {
+		"nav-bar": "components/navBar/navBar"
+	},
+	"resizable": true,
+	"networkTimeout": {
+		"request": 10000,
+		"uploadFile": 10000,
+		"downloadFile": 10000,
+		"connectSocket": 10000
+	},
+	"navigateToMiniProgramAppIdList": [
+		"wx397e43d8e81d7ed3",
+		"wxfe3527f58f03595c",
+		"wx9d21e35d285602b1",
+		"wx32d1c52efbc79d67",
+		"wxd934e6c4fa557d50"
+	]
+}

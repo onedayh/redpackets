@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>常见问题</title>
+
+<style type="text/css">
+@import url("../app_themes/font-awesome/css/font-awesome.css");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font: 16px/1 'Open Sans', sans-serif;
+  color: #555;
+  background: #fff;
+}
+
+body {
+  padding: 5px;
+}
+
+.togglebox {
+  width: 98%;
+  margin: 5 auto;
+  background: #fff;
+  transform: translateZ(0);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+input[type="radio"] {
+    margin-top: 10px;
+  position: absolute;
+  opacity: 0;
+}
+
+label {
+  position: relative;
+  display: block;
+  padding: 30px 40px 30px 40px;
+  line-height: 50px;
+  font-size: 34px;
+  font-weight: 700;
+  border-top: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+}
+
+label[for*='1'] {
+  border: 0;
+}
+
+label:after {
+  content: '\f02d';
+  position: absolute;
+  top: 26px;
+  right: 20px;
+  font-family: fontawesome;
+  transform: rotate(90deg);
+  transition: .3s transform;
+}
+
+section {
+  height: 0;
+  transition: .3s all;
+  overflow: hidden;
+}
+
+#toggle1:checked ~ label[for*='1']:after,
+#toggle2:checked ~ label[for*='2']:after,
+#toggle3:checked ~ label[for*='3']:after,
+#toggle4:checked ~ label[for*='4']:after,
+#toggle5:checked ~ label[for*='5']:after,
+#toggle6:checked ~ label[for*='6']:after,
+#toggle7:checked ~ label[for*='7']:after,
+#toggle8:checked ~ label[for*='8']:after
+{
+  transform: rotate(0deg);
+}
+
+#toggle1:checked ~ #content1,
+#toggle2:checked ~ #content2,
+#toggle3:checked ~ #content3,
+#toggle4:checked ~ #content4,
+#toggle5:checked ~ #content5,
+#toggle6:checked ~ #content6,
+#toggle7:checked ~ #content7
+{
+  height: 230px;
+}
+#toggle8:checked ~ #content8{
+  height: 500px;
+}
+
+p {
+    white-space:normal;word-wrap:break-word;
+  padding: 0 20px 5px 40px;
+  font-size: 32px;
+  line-height: 1.5;
+}
+</style>
+</head>
+<body>
+
+<div class="togglebox">
+  
+  <input id="toggle1" type="radio" name="toggle" />
+  <label for="toggle1">开启红包后，金额没有进入个人微信？</label>
+  <section id="content1">
+    <p>
+      红包拆开后，红包金额进入用户在芝麻红包小程序的钱包中，可通过在【我的】-【钱包】功能中提取您所领取的金额（可累计提取，每次提取的金额必须大于1元），提取后，资金将转入您的微信零钱中，用户可进入微信零钱明细中查询。
+    </p>
+  </section>
+  
+  <input id="toggle2" type="radio" name="toggle" />
+  <label for="toggle2">我发的红包不想被随意领取（不认识的人）？</label>
+  <section id="content2">
+    <p>
+      红包创建后，如果非公开到芝麻广场（默认不公开），则您的红包仅可以通过您自己分享的方式发出，其他非您传播用户无法进入领取；如果公开到芝麻广场，则红包可以被平台所有玩家抢，根据您自己的意愿，可设置该选项。
+    </p>
+  </section>
+  
+  <input id="toggle3" type="radio" name="toggle" />
+  <label for="toggle3">我想发一个超200元的红包，怎么发？</label>
+  <section id="content3">
+    <p>
+      此需求需联系芝麻客服，由客服人员在后台为您设置金额。
+    </p>
+  </section>
+
+  <input id="toggle4" type="radio" name="toggle" />
+  <label for="toggle4">我的红包想限制仅发放给企业公众号的粉丝，如何设置？</label>
+  <section id="content4">
+    <p>
+      此业务需联系芝麻客服，同时公众号只能是认证的订阅号或服务号，您需提供相关信息，由客服人员在后台为您开通红包领取限制；非公众号粉丝无法领取红包。
+    </p>
+  </section>
+
+  <input id="toggle5" type="radio" name="toggle" />
+  <label for="toggle5">我希望红包能为开发的小程序导流，如何设置？</label>
+  <section id="content5">
+    <p>
+      此业务需联系芝麻客服，需提供导流的小程序相关信息，由客服人员在后台为您开通领取导流。用户领取红包后，引导用户跳转到您的小程序。
+    </p>
+  </section>
+
+  <input id="toggle6" type="radio" name="toggle" />
+  <label for="toggle6">红包需要设置开始和结束时间，非设置时间内不允许领取？</label>
+  <section id="content6">
+    <p>
+      红包创建后，联系芝麻客服，由客服人员在后台为您设置时间。
+    </p>
+  </section>
+
+  <input id="toggle7" type="radio" name="toggle" />
+  <label for="toggle7">我的红包最后没有领完，如何退回剩余金额？</label>
+  <section id="content7">
+    <p>
+      红包创建后，24小时候，如没有领取完毕，红包主可进入小程序 【我的】-【记录】，找到所发的红包，点击【撤回红包】按钮，红包剩余金额将进入零钱，红包主可通过【余额提现】方式提回至个人微信零钱。
+    </p>
+  </section>
+
+  <input id="toggle8" type="radio" name="toggle" />
+  <label for="toggle8">如何分享我的创建的红包给亲朋好友？</label>
+  <section id="content8">
+    <p>芝麻红包在您创建好红包后，提供了两种方式支持您分享红包。</p>
+    <p>a)	海报分享：创建好红包后，会马上引导您进入红包海报，您可以保存海报图片到手机相册，您可以选择发送图片给好友或发微信朋友圈时从相册中选择此红包海报，您的好友看到图片后可在微信中直接”识别图片小程序码”进入您的红包游戏中领取。</p>
+    <p>b)	直接分享：您也可以选择分享您的红包链接，直接在您微信好友通讯录中选择需要发送的群或个人，小程序将直接分享至目的位置，收到的用户可直接点击即可进入红包领取。</p>
+    </p>
+  </section>
+
+</div>
+
+
+</body>
+</html>
+

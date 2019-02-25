@@ -1,0 +1,27 @@
+﻿<div class="main"  data-options="region:'center',title:'',border:false" style="border:none;">
+    <table id="dglist"></table>
+    <div id="tools_1">
+        <div style="margin-bottom: 5px">
+            <table   class="form_table" style="padding-top: 10px;">
+                <tr>
+                    <th>页面:</th>
+                    <td>
+                        <input class="easyui-textbox theme-textbox-radius" search-options="key:'route'" style="margin-left: 0px;" /></td>
+                <td>
+                        <a href="#" class="easyui-linkbutton button-blue fa-4x" style="width:90px;" id="btnSearch"><i class="fa fa-search"></i>&nbsp;查询</a>
+                        <a href="#" class="easyui-linkbutton" style="width:90px;" id="btnReset"><i class="fa fa-refresh"></i>&nbsp;重置</a>                    
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="easyui-panel" style="padding:5px;border:none;">
+                <a href="#" class="easyui-linkbutton button-blue fa-4x" style="width:110px;height:34px" id="btnNewRoute"><i class="fa fa-plus"></i>&nbsp;&nbsp;新建分享</a>
+        </div>
+    </div>
+</div> 
+
+<%- contentFor('head_extension') %>
+ <script type="text/javascript" src="/admin/scripts/sharelist.js"></script>
+
+ 
+ 

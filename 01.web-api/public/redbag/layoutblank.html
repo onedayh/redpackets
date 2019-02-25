@@ -1,0 +1,28 @@
+﻿<table class="form_table" style="padding:5px 5px 5px 30px;width:100%" data-options="fit:true">
+    <tr>
+        <td>
+            <input class="easyui-textbox theme-textbox-radius" id="layout"  style="width:95%;height:300px" data-options="multiline:true,prompt:'游戏布局定义',validType:'length[1,1024]'" />
+        </td>
+    </tr>
+</table>
+<div style="text-align: center;padding-top: 10px">
+    <a href="#" onclick="closeLayout()" class="easyui-linkbutton  button-blue" style="width: 110px;"><i class="fa fa-check"></i>&nbsp;&nbsp;确定</a>
+</div>
+ <!--以下三个是用于上传的-->
+ <style>
+     .noedit {color:#db2828;padding-left: 10px}
+ </style>
+ <script>
+    var type ;
+    $(document).ready(function () {
+        type = $.getUrlParam('type') || 'layout';
+       
+        var layoutText = dialogHelper.callParentFunc('getDefine',type); 
+        $('#layout').textbox('setValue',layoutText);
+    });
+
+    function closeLayout(){
+        dialogHelper.callParentFunc('setDefine',{type:type,value:$('#layout').textbox('getValue')}); 
+        dialogHelper.closeModal();
+    }
+</script>

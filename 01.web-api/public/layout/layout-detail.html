@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title><%= pagetitle%></title>
+    <!-- <link rel="stylesheet" type="text/css" href="/app_themes/green/easyui.css" /> -->
+    <link rel="stylesheet" type="text/css" href="/app_themes/insdep/easyui.css" />
+    <link href="/app_themes/insdep/easyui_animation.css" rel="stylesheet" type="text/css">
+    <link href="/app_themes/insdep/easyui_plus.css" rel="stylesheet" type="text/css">
+    <link href="/app_themes/insdep/insdep_theme_default.css" rel="stylesheet" type="text/css">
+    <link href="/app_themes/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="/scripts/const.js"></script>
+    <script type="text/javascript" src="/scripts/urlconfig.js"></script>
+    <script type="text/javascript" src='/scripts/jquery-3.1.1.min.js'></script>
+    <script type="text/javascript" src='/scripts/jquery-easyui/jquery.easyui.min.js'></script>
+    <script type="text/javascript" src='/scripts/jquery-easyui/locale/easyui-lang-zh_cn.js'></script>
+    <script type="text/javascript" src="/app_themes/insdep/jquery.insdep-extend.min.js"></script>
+
+    <script type="text/javascript" src="/scripts/framework/framework_mdipage.js"></script>
+    <script type="text/javascript" src="/scripts/framework/framework_apicaller.js"></script>
+    <script type="text/javascript" src="/scripts/framework/framework_common.js"></script>
+    <script type="text/javascript" src="/scripts/framework/framework_extension.js"></script>
+    <script type="text/javascript" src="/scripts/framework/framework_baseform.js"></script>
+    <script type="text/javascript" src="/scripts/framework/framework_dialoghelper.js"></script>
+    <script type="text/javascript" src="/scripts/framework/framework_formhelper.js"></script>
+    <script type="text/javascript" src="/scripts/framework/framework_detailform.js"></script>
+    <link rel="stylesheet" type="text/css" href="/app_themes/icon.css" />
+    <style>
+             .datagrid-body td{
+                     border-right:1px solid transparent;
+                     border-bottom:1px solid #eee;
+                 }
+            </style>
+    <%-defineContent('head_extension')%>
+</head>
+<body>
+    <form id="form">
+        <div id="main-layout" class="easyui-layout" style="height: 500px;">
+                
+                <div data-options="region:'center',title:''"  style="border: none;">
+                    <%-body%>
+                </div>  
+                <div id="bottomAction" data-options="region:'south'"  style="border: none;border-top:1px solid #cccccc; overflow: hidden;">
+                    <div class="dialog-button" style="text-align: right; padding: 15px 25px 15px 30px;">
+                        <%-defineContent('toolbarbutton')%>
+                        <a href="javascript:dialogHelper.closeModal();" style="width:110px;height:34px" class="easyui-linkbutton fa-4x"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;取消</a>
+                        <a href="#" class="easyui-linkbutton button-blue fa-4x" style="width:110px;height:34px" id="lnkSave"><i class="fa fa-save"></i>&nbsp;&nbsp;保存</a>
+                       
+                    </div>
+                </div>
+        </div> 
+        
+    </form>
+</body>
+</html>

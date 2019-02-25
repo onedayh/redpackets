@@ -1,0 +1,36 @@
+<wxs module="filters" src="../../filters/filter.wxs" />
+<import src="../../templates/template.wxml"/>
+<nav-bar title="钱包" showBack/>
+<view style="padding-top: {{pagePt}}px" wx:if="{{isLoad}}">
+    <view class="top-wrap bg-white">
+        <view class="balance flex-btw">
+            <view class="bal-tit">可提现金额</view>
+            <view>￥<text class="rmb1">{{filters.toFix(balance)}}</text></view>
+        </view>
+        <view class="iwant">我要提现</view>
+        <view class="cash-input">
+            <view class="font-bold rmb2">￥</view>
+            <input class="cash-ipt" bindinput="bindinput" type="digit" value="{{outMoney}}" placeholder="0.00" placeholder-class="pla-class"></input>
+            <view class="allin font-red" bindtap="allin">全部提现</view>
+        </view>
+        <view class="date">提现金额至少{{minimaldraw}}元</view>
+        <form report-submit bindsubmit="cashOut">
+            <button class="flex-mid cash-out {{outMoney ? '' : 'disabled'}}" disabled="{{!outMoney}}" form-type="submit">提现</button>
+        </form>
+    </view>
+    <view class="bot-wrap bg-white">
+        <view class="bot-tit">我的钱包流水</view>
+        <view class="flex-btw item" wx:for="{{walletList}}" wx:key="index">
+            <view class="type">{{item.typename}}</view>
+            <view class="right">
+                <view class="day">{{item.date}}</view>
+                <view class="font-bold {{item.io ? 'font-red' : 'font-green'}}">{{item.io ? '+' : '-'}}{{filters.toFix(item.money)}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+<template is="feedback" data="{{feedback}}" wx:if="{{isLoad && walletList.length > 0 && feedback}}" />
+<template is="empty" data="{{...empty}}" wx:if="{{isLoad && walletList.length === 0}}" />
+
+
+
